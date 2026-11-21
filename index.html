@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,84 +7,163 @@
   <script src="https://tailwindcss.com"></script>
   <link href="https://googleapis.com" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; background: #070709; color: #f4f4f5; }
-    h1, h2, .brand { font-family: 'Syne', sans-serif; }
+    body {
+      background-color: #09090b;
+      color: #fafafa;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .serif { font-family: 'Instrument Serif', serif; }
     .mono { font-family: 'JetBrains Mono', monospace; }
-    .glow { box-shadow: 0 0 80px -20px rgba(56, 189, 248, 0.35); }
+
+    /* Subtle Film Grain Overlay */
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://w3.org id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Spinning Vinyl Animation */
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+    .vinyl-spin { animation: spinSlow 6s linear infinite; }
+    .vinyl-paused { animation-play-state: paused; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-sky-400 selection:text-black">
+<body class="antialiased selection:bg-white selection:text-black">
+  <div class="grain"></div>
 
-  <!-- Top Navbar -->
-  <header class="w-full max-w-5xl mx-auto px-6 py-6 flex items-center justify-between border-b border-white/10">
-    <a href="index.html" class="brand text-xl font-extrabold tracking-tight">JG<span class="text-sky-400">.</span></a>
-    <nav class="flex gap-6 text-sm font-medium text-zinc-400">
-      <a href="index.html" class="text-white">Home</a>
-      <a href="music.html" class="hover:text-white transition">Music</a>
-      <a href="aviation.html" class="hover:text-white transition">Aviation</a>
-    </nav>
+  <!-- Minimal Floating Nav -->
+  <nav class="max-w-5xl mx-auto px-6 py-8 flex justify-between items-center text-xs mono uppercase tracking-widest text-zinc-400">
+    <span class="text-white font-semibold">JISHNU GANGULY</span>
+    <div class="flex gap-6">
+      <a href="#music" class="hover:text-white transition">Music</a>
+      <a href="#aviation" class="hover:text-white transition">Aviation</a>
+      <a href="#connect" class="hover:text-white transition">Connect</a>
+    </div>
+  </nav>
+
+  <!-- Editorial Hero -->
+  <header class="max-w-5xl mx-auto px-6 pt-16 pb-28">
+    <p class="mono text-xs text-zinc-500 uppercase tracking-widest mb-6">
+      15 y/o • New Delhi • Sound & Altitude
+    </p>
+    <h1 class="serif text-6xl sm:text-8xl md:text-9xl font-normal tracking-tight leading-[0.92] text-white mb-8">
+      Making noise on the ground, <span class="italic text-zinc-400">head in the clouds.</span>
+    </h1>
+    <p class="text-zinc-400 text-lg sm:text-xl max-w-xl font-light leading-relaxed">
+      I’m Jishnu—a 15-year-old musician and aviation obsessive. Just dropped my <span class="text-white">Bella Ciao EP</span>, with more releases and side projects on deck.
+    </p>
   </header>
 
-  <!-- Main Hero -->
-  <main class="w-full max-w-5xl mx-auto px-6 py-16">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mono text-xs text-sky-400 mb-6">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      AGE 15 • NEW DELHI • PRODUCER & AVGEEK
-    </div>
-
-    <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight leading-[1.02] mb-6">
-      Jishnu <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-400 to-amber-300">Ganguly.</span>
-    </h1>
-
-    <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl leading-relaxed mb-10">
-      Making music from my bedroom, tracking jets across the sky, and building my own corner of the internet. Check out my latest <span class="text-white font-medium">Bella Ciao EP</span> below.
-    </p>
-
-    <!-- Featured Bento Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <!-- Music Showcase (Interactive Vinyl) -->
+  <section id="music" class="max-w-5xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
       
-      <!-- Featured EP Card -->
-      <div class="md:col-span-2 p-8 rounded-3xl bg-zinc-900/70 border border-white/10 glow flex flex-col justify-between">
-        <div>
-          <span class="mono text-xs text-amber-400 uppercase tracking-widest">Latest Release</span>
-          <h2 class="text-3xl font-bold mt-2 mb-3">Bella Ciao — EP</h2>
-          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-            Streaming now on SoundCloud, with Bandcamp touching down soon. Click through to the Music page to listen and test out the interactive browser synth.
-          </p>
+      <!-- Interactive Vinyl Record -->
+      <div class="md:col-span-5 flex flex-col items-center">
+        <div id="vinyl" onclick="toggleSpin()" title="Click to spin/pause"
+          class="vinyl-spin vinyl-paused cursor-pointer w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-gradient-to-tr from-zinc-950 via-zinc-800 to-zinc-950 border border-white/15 shadow-2xl flex items-center justify-center relative group">
+          <!-- Vinyl Grooves -->
+          <div class="w-56 h-56 rounded-full border border-white/5 flex items-center justify-center">
+            <div class="w-40 h-40 rounded-full border border-white/5 flex items-center justify-center">
+              <!-- Center Label -->
+              <div class="w-24 h-24 rounded-full bg-gradient-to-br from-rose-500 to-amber-500 flex flex-col items-center justify-center text-black text-center p-2 shadow-inner">
+                <span class="mono text-[9px] font-bold uppercase tracking-tighter">BELLA CIAO</span>
+                <span class="text-[8px] opacity-75">EP • 2026</span>
+                <div class="w-3 h-3 rounded-full bg-zinc-950 mt-1"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="music.html" class="px-5 py-3 rounded-xl bg-sky-400 text-black font-semibold text-sm hover:bg-sky-300 transition">
-            Open Music Studio →
+        <span id="spin-hint" class="mono text-[11px] text-zinc-500 mt-4">CLICK DISC TO SPIN</span>
+      </div>
+
+      <!-- Release Details -->
+      <div class="md:col-span-7">
+        <span class="mono text-xs text-rose-400 uppercase tracking-widest">01 / Latest Release</span>
+        <h2 class="serif text-5xl sm:text-6xl mt-2 mb-4">Bella Ciao — EP</h2>
+        <p class="text-zinc-400 leading-relaxed mb-8 max-w-lg">
+          Out now on SoundCloud, with Bandcamp arriving shortly. Built late at night with loud headphones and zero shortcuts.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="YOUR_SOUNDCLOUD_LINK" target="_blank"
+            class="px-7 py-3.5 rounded-full bg-white text-black text-sm font-medium hover:bg-zinc-200 transition">
+            Listen on SoundCloud ↗
           </a>
-          <a href="YOUR_SOUNDCLOUD_LINK" target="_blank" class="px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold hover:bg-white/10 transition">
-            SoundCloud ↗
-          </a>
+          <span class="px-7 py-3.5 rounded-full border border-white/15 text-zinc-400 text-sm">
+            Bandcamp — Coming Soon
+          </span>
         </div>
       </div>
 
-      <!-- Aviation Card -->
-      <a href="aviation.html" class="group p-8 rounded-3xl bg-zinc-900/70 border border-white/10 hover:border-sky-400/50 transition flex flex-col justify-between">
-        <div>
-          <span class="mono text-xs text-sky-400 uppercase tracking-widest">Hangar // 02</span>
-          <h2 class="text-2xl font-bold mt-2 mb-3 group-hover:text-sky-400 transition">Aviation Log →</h2>
+    </div>
+  </section>
+
+  <!-- Aviation & Interests (Clean Editorial List) -->
+  <section id="aviation" class="max-w-5xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div class="md:col-span-5">
+        <span class="mono text-xs text-sky-400 uppercase tracking-widest">02 / Off the Clock</span>
+        <h2 class="serif text-5xl mt-2">Aviation &<br><span class="italic text-zinc-400">Everything Else.</span></h2>
+      </div>
+
+      <div class="md:col-span-7 divide-y divide-white/10">
+        <div class="py-6 first:pt-0">
+          <div class="flex justify-between items-baseline mb-2">
+            <h3 class="text-lg font-medium">Commercial Aviation</h3>
+            <span class="mono text-xs text-zinc-500">VIDP / DEL</span>
+          </div>
           <p class="text-zinc-400 text-sm leading-relaxed">
-            Commercial jets, flight sim routes, aircraft specs, and spotting notes from VIDP.
+            Deep into aircraft engineering, long-haul widebodies, flight simulators, and tracking traffic overhead.
           </p>
         </div>
-        <div class="mono text-xs text-zinc-500 mt-6">ALT: 38,000 FT • MACH 0.85</div>
-      </a>
 
-    </div>
-  </main>
+        <div class="py-6">
+          <div class="flex justify-between items-baseline mb-2">
+            <h3 class="text-lg font-medium">Music Production</h3>
+            <span class="mono text-xs text-zinc-500">DAW & SYNTHS</span>
+          </div>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Experimenting with melodies, remixes, and electronic arrangements—starting with the Bella Ciao EP.
+          </p>
+        </div>
 
-  <!-- Footer -->
-  <footer class="w-full max-w-5xl mx-auto px-6 py-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-zinc-500 mono">
-    <div>© 2026 JISHNU GANGULY</div>
-    <div class="flex gap-5">
-      <a href="YOUR_SOUNDCLOUD_LINK" target="_blank" class="hover:text-white">SoundCloud</a>
-      <a href="https://github.com" target="_blank" class="hover:text-white">GitHub</a>
+        <div class="py-6">
+          <div class="flex justify-between items-baseline mb-2">
+            <h3 class="text-lg font-medium">Tinkering</h3>
+            <span class="mono text-xs text-zinc-500">SIDE QUESTS</span>
+          </div>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Building random web projects, exploring tech, and learning by shipping stuff online.
+          </p>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Minimal Footer / Connect -->
+  <footer id="connect" class="max-w-5xl mx-auto px-6 py-20 border-t border-white/10">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8">
+      <div>
+        <span class="mono text-xs text-zinc-500 uppercase tracking-widest">03 / Connect</span>
+        <h2 class="serif text-4xl sm:text-5xl mt-2">Find me online.</h2>
+      </div>
+      <div class="flex flex-wrap gap-6 text-sm font-medium">
+        <a href="YOUR_SOUNDCLOUD_LINK" target="_blank" class="underline underline-offset-4 decoration-zinc-600 hover:decoration-white">SoundCloud</a>
+        <a href="YOUR_BANDCAMP_LINK" target="_blank" class="underline underline-offset-4 decoration-zinc-600 hover:decoration-white">Bandcamp</a>
+        <a href="https://github.com" target="_blank" class="underline underline-offset-4 decoration-zinc-600 hover:decoration-white">GitHub</a>
+      </div>
+    </div>
+    <p class="mono text-xs text-zinc-600 mt-16">© 2026 JISHNU GANGULY</p>
   </footer>
 
+  <script>
+    function toggleSpin() {
+      const v = document.getElementById('vinyl');
+      const hint = document.getElementById('spin-hint');
+      v.classList.toggle('vinyl-paused');
+      hint.textContent = v.classList.contains('vinyl-paused') ? 'CLICK DISC TO SPIN' : 'SPINNING • CLICK TO PAUSE';
+    }
+  </script>
 </body>
 </html>
