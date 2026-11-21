@@ -3,80 +3,332 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jishnu Ganguly</title>
+  <title>JISHNU GANGULY // FLIGHT & STUDIO DECK</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #04070d;
+      --surface: rgba(13, 21, 38, 0.7);
+      --border: rgba(56, 189, 248, 0.22);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.4);
+      --amber: #f59e0b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background-color: #0b0f19;
-      color: #e2e8f0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 680px;
-      margin: 60px auto;
-      padding: 0 20px;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.14) 0%, transparent 60%),
+        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+    }
+
+    /* Animated Radar Sweep */
+    .radar-bg {
+      position: fixed;
+      top: -220px;
+      right: -220px;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .radar-bg::before {
+      content: '';
+      position: absolute;
+      inset: 90px;
+      border-radius: 50%;
+      border: 1px dashed rgba(56, 189, 248, 0.1);
+    }
+    .radar-sweep {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 70%, rgba(56, 189, 248, 0.18) 100%);
+      animation: sweep 7s linear infinite;
+    }
+
+    @keyframes sweep {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Top HUD Bar */
+    .hud-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 50px;
+      letter-spacing: 0.08em;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      margin-right: 8px;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Hero */
+    .hero { margin-bottom: 55px; }
+
+    .callsign {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--amber);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 580px;
       line-height: 1.6;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.2rem;
-      color: #ffffff;
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
     }
-    .tagline {
-      color: #38bdf8;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
+
     .card {
-      background: #131c31;
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    h2 {
-      margin-top: 0;
-      font-size: 1.3rem;
-      color: #ffffff;
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px -15px var(--accent-glow);
     }
+
+    .col-12 { grid-column: span 12; }
+    .col-7 { grid-column: span 7; }
+    .col-5 { grid-column: span 5; }
+
+    @media (max-width: 768px) {
+      .col-7, .col-5 { grid-column: span 12; }
+    }
+
+    .card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h2 { font-size: 1.55rem; margin-bottom: 10px; color: #fff; }
+    p { color: var(--muted); line-height: 1.65; font-size: 0.98rem; }
+
+    /* Equalizer Animation */
+    .equalizer { display: flex; align-items: flex-end; gap: 3px; height: 16px; }
+    .bar {
+      width: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: eq 1s ease-in-out infinite;
+    }
+    .bar:nth-child(2) { animation-delay: 0.2s; }
+    .bar:nth-child(3) { animation-delay: 0.4s; }
+    .bar:nth-child(4) { animation-delay: 0.1s; }
+
+    @keyframes eq {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+
+    /* Buttons */
+    .btn-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
     .btn {
-      display: inline-block;
-      background: #38bdf8;
-      color: #0b0f19;
-      padding: 10px 18px;
-      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #04070d;
+      padding: 12px 22px;
+      border-radius: 10px;
       text-decoration: none;
-      font-weight: bold;
-      margin-right: 10px;
-      margin-top: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
     }
-    .btn-outline {
-      background: transparent;
-      color: #38bdf8;
-      border: 1px solid #38bdf8;
+
+    .btn:hover {
+      background: #7dd3fc;
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: scale(1.02);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Telemetry List */
+    .telemetry-list { list-style: none; margin-top: 10px; }
+    .telemetry-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    .telemetry-list li:last-child { border-bottom: none; }
+    .telemetry-val { color: var(--amber); }
+
+    .embed-box {
+      margin-top: 18px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
     }
   </style>
 </head>
 <body>
 
-  <h1>Jishnu Ganguly</h1>
-  <div class="tagline">15 • Music, Aviation & Side Projects 🎧✈️</div>
+  <div class="radar-bg"><div class="radar-sweep"></div></div>
 
-  <div class="card">
-    <h2>🎵 Latest Release: Bella Ciao EP</h2>
-    <p>My newest EP is out now on SoundCloud—and heading to Bandcamp very soon. Give it a listen below.</p>
-    <!-- Paste your SoundCloud Embed iframe right below this line later! -->
-    <a href="https://soundcloud.com/jishnu-ganguly-661670492" class="btn" target="_blank">Listen on SoundCloud</a>
-    <a href="#" class="btn btn-outline">Bandcamp (Coming Soon)</a>
-  </div>
+  <div class="container">
+    <div class="hud-bar">
+      <div><span class="status-dot"></span>SYS.ONLINE // VIDP</div>
+      <div id="clock">UTC 00:00:00</div>
+    </div>
 
-  <div class="card">
-    <h2>✈️ About & Interests</h2>
-    <p>Hey, I'm Jishnu. When I'm not making music, I'm usually falling down aviation rabbit holes, plane spotting, or tinkering with new projects on the internet.</p>
-  </div>
+    <section class="hero">
+      <span class="callsign">// CALLSIGN: JISHNU-01 • AGE 15</span>
+      <h1>Jishnu Ganguly</h1>
+      <p class="hero-sub">
+        Music producer, aviation enthusiast, and bedroom tinkerer. Crafting soundscapes from the ground while keeping my head in the clouds.
+      </p>
+    </section>
 
-  <div class="card">
-    <h2>🔗 Connect</h2>
-    <a href="https://soundcloud.com/jishnu-ganguly-661670492" class="btn btn-outline" target="_blank">SoundCloud</a>
-    <a href="https://instagram.com/j1shnuke.wav" class="btn btn-outline" target="_blank">Socials</a>
-  </div>
+    <div class="bento-grid">
+      <div class="card col-12">
+        <div class="card-tag">
+          <span>01 // FEATURED TRANSMISSION</span>
+          <div class="equalizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+        </div>
+        <h2>Bella Ciao — EP</h2>
+        <p>My latest EP is officially airborne on SoundCloud, with a lossless Bandcamp release clearing the runway soon.</p>
+        
+        <div class="embed-box">
+          <!-- PASTE YOUR SOUNDCLOUD EMBED IFRAME RIGHT HERE -->
+        </div>
 
-</body>
-</html>
+        <div class="btn-group">
+          <a href="YOUR_SOUNDCLOUD_LINK" class="btn" target="_blank">▶ Stream on SoundCloud</a>
+          <a href="#" class="btn btn-ghost">Bandcamp (Cleared for Takeoff Soon)</a>
+        </div>
+      </div>
+
+      <div class="card col-7">
+        <div class="card-tag"><span>02 // FLIGHT LOG & BIO</span></div>
+        <h2>Music Meets Altitude</h2>
+        <p>
+          Hey, I’m Jishnu. When I’m not layering synths and tweaking mixes, I’m deep-diving into commercial aviation, flight simulators, and random tech builds. This hub connects everything I’m creating—no algorithms, just direct output.
+        </p>
+      </div>
+
+      <div class="card col-5">
+        <div class="card-tag"><span>03 // TELEMETRY</span></div>
+        <ul class="telemetry-list">
+          <li><span>AIRSPACE</span> <span class="telemetry-val">DEL / VIDP</span></li>
+          <li><span>LATEST EP</span> <span class="telemetry-val">BELLA CIAO</span></li>
+          <li><span>DISCIPLINE</span> <span class="telemetry-val">AUDIO + AVN</span></li>
+          <li><span>STATUS</span> <span class="telemetry-val">AIRBORNE</span></li>
+        </ul>
+      </div>
+
+      <div class="card col-12">
+        <div class="card-tag"><span>04 // COMMS & FREQUENCIES</span></div>
+        <h2>Connect Across Platforms</h2>
+        <p>Want to collaborate on a track, talk airplanes, or follow upcoming drops? Reach out below.</p>
+        <div class="btn-group">
+          <a href="YOUR_SOUNDCLOUD_LINK" class="btn btn-ghost" target="_blank">SoundCloud</a>
+          <a href="YOUR_BANDCAMP_LINK" class="btn btn-ghost" target="_blank">Bandcamp</a>
+          <a href="YOUR_INSTAGRAM_OR_YOUTUBE" class="btn btn-ghost" target="_blank">Instagram / YouTube</a>
+          <a href="https://github.com" class="btn btn-ghost" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      TRANSMISSION END // BUILT BY JISHNU GANGULY • © 2026
