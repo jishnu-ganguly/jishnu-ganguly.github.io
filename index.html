@@ -2,316 +2,1314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10100f">
-<title>Jishnu Ganguly — Independent Frequency</title>
-<meta name="description" content="The personal website of Jishnu Ganguly. Music, aviation, technology and everything in between.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Jishnu Ganguly — music, aviation, technology and everything in between. EST. 2011.">
+  <title>Jishnu Ganguly — EST. 2011</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --bg:#10100f;
-  --paper:#e9e5dc;
-  --muted:#85847e;
-  --accent:#e8794d;
-  --line:rgba(233,229,220,.15);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--bg);color:var(--paper);
-  font-family:'DM Sans',sans-serif;overflow-x:hidden;
-}
-::selection{background:var(--accent);color:#10100f}
-.mono{font-family:'DM Mono',monospace}
-.serif{font-family:'Playfair Display',serif}
-.grain{
-  position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.12;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-}
-a{color:inherit;text-decoration:none}
-.nav-link{transition:color .3s}
-.nav-link:hover{color:var(--accent)}
-.hero-title{
-  font-size:clamp(4.5rem,13.5vw,12rem);
-  line-height:.77;letter-spacing:-.105em;font-weight:800;
-}
-.hero-title span{display:block}
-.hero-title .second{padding-left:12%}
-.outline{
-  color:transparent;-webkit-text-stroke:1px rgba(233,229,220,.75);
-}
-.orange{color:var(--accent)}
-.rule{border-color:var(--line)}
-.eyebrow{font-size:10px;letter-spacing:.2em;color:var(--muted)}
-.record{
-  width:min(66vw,330px);aspect-ratio:1;border-radius:50%;
-  background:repeating-radial-gradient(circle,#171717 0px,#171717 2px,#292826 3px,#151515 4px);
-  box-shadow:0 20px 80px #0009,0 0 0 1px #ffffff12;
-  position:relative;display:grid;place-items:center;
-  animation:spin 12s linear infinite;animation-play-state:paused;
-}
-.record.playing{animation-play-state:running}
-.record:before{
-  content:"";position:absolute;inset:30%;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#f6a47b,#bd5338 50%,#6b241d);
-}
-.record:after{
-  content:"";position:absolute;width:8px;height:8px;border-radius:50%;
-  background:#111;z-index:2;
-}
-.record-label{
-  position:absolute;z-index:1;width:24%;aspect-ratio:1;
-  border:1px solid #ffffff40;border-radius:50%;
-  display:grid;place-items:center;text-align:center;
-  color:#f5e8d9;font-family:'DM Mono',monospace;font-size:8px;
-  letter-spacing:.1em;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.marquee{overflow:hidden;white-space:nowrap}
-.marquee-inner{display:inline-block;animation:marquee 25s linear infinite}
-@keyframes marquee{to{transform:translateX(-50%)}}
-.project{
-  border-top:1px solid var(--line);padding:25px 0;
-  transition:padding .3s,color .3s;
-}
-.project:hover{padding-left:12px;color:var(--accent)}
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.aviation-art{
-  background:radial-gradient(ellipse at 70% 40%,#39332d,#1a1917 65%);
-  position:relative;overflow:hidden;
-}
-.flight-line{stroke:#e8794d;stroke-width:1;fill:none;opacity:.8}
-.big-number{font-size:clamp(5rem,15vw,12rem);letter-spacing:-.09em}
-button{cursor:pointer}
-@media(max-width:640px){
- .hero-title{font-size:18vw}
- .hero-title .second{padding-left:3%}
- .record{width:65vw}
-}
-</style>
+  <style>
+    :root {
+      --bg: #10100f;
+      --surface: #191917;
+      --surface-2: #22221f;
+      --text: #f0eee7;
+      --muted: #92918a;
+      --line: rgba(240,238,231,.15);
+      --accent: #ff6b35;
+      --accent-soft: rgba(255,107,53,.12);
+      --mono: "DM Mono", monospace;
+      --sans: "DM Sans", sans-serif;
+      --serif: "Playfair Display", serif;
+      --page-pad: clamp(22px, 6vw, 90px);
+    }
+
+    [data-theme="light"] {
+      --bg: #eeece5;
+      --surface: #e4e1d8;
+      --surface-2: #d8d5cb;
+      --text: #171715;
+      --muted: #68675f;
+      --line: rgba(23,23,21,.18);
+      --accent: #d94e20;
+      --accent-soft: rgba(217,78,32,.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+      transition: background .4s, color .4s;
+      cursor: none;
+    }
+
+    a, button { color: inherit; }
+    a { text-decoration: none; }
+    button { font: inherit; }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .grain {
+      position: fixed;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      z-index: 20;
+      pointer-events: none;
+      opacity: .045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+      animation: grainMove .25s steps(2) infinite;
+    }
+
+    @keyframes grainMove {
+      0% { transform: translate(0,0); }
+      25% { transform: translate(2%,-1%); }
+      50% { transform: translate(-1%,2%); }
+      75% { transform: translate(1%,1%); }
+      100% { transform: translate(-2%,-1%); }
+    }
+
+    .cursor, .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1000;
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .cursor {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+    }
+
+    .cursor-ring {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--accent);
+      transition: width .25s, height .25s, background .25s;
+    }
+
+    .cursor-ring.active {
+      width: 58px;
+      height: 58px;
+      background: var(--accent-soft);
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      z-index: 1001;
+      background: transparent;
+    }
+
+    .scroll-progress span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px var(--page-pad);
+      background: linear-gradient(to bottom, var(--bg), transparent);
+      transition: padding .3s, background .3s;
+    }
+
+    .topbar.scrolled {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 38px);
+    }
+
+    .nav a, .theme-toggle {
+      font: 10px var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .2s;
+    }
+
+    .nav a:hover, .theme-toggle:hover { color: var(--accent); }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 9px 13px;
+      cursor: none;
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding: 150px var(--page-pad) 70px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      width: min(65vw, 780px);
+      aspect-ratio: 1;
+      right: -10%;
+      top: 12%;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      opacity: .65;
+      transform: translateY(var(--hero-shift, 0px)) rotate(-18deg);
+      transition: transform .1s linear;
+    }
+
+    .hero-orbit::before, .hero-orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      inset: 12%;
+    }
+
+    .hero-orbit::after {
+      inset: 25%;
+      border-color: var(--accent);
+      opacity: .5;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 16%;
+      left: 24%;
+      box-shadow: 0 0 28px var(--accent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+    }
+
+    .eyebrow {
+      font: 11px var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--accent);
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: clamp(65px, 11.7vw, 170px);
+      line-height: .84;
+      letter-spacing: -.095em;
+      font-weight: 600;
+      max-width: 1100px;
+    }
+
+    .hero h1 .serif {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: -.08em;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-top: clamp(55px, 9vw, 115px);
+    }
+
+    .hero-description {
+      max-width: 340px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .hero-description strong { color: var(--text); font-weight: 500; }
+
+    .hero-meta {
+      font: 10px var(--mono);
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-align: right;
+      line-height: 2;
+    }
+
+    .hero-meta span { color: var(--accent); }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 35px;
+      left: var(--page-pad);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font: 9px var(--mono);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue i {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      display: block;
+      animation: cue 1.8s infinite ease-in-out;
+      transform-origin: left;
+    }
+
+    @keyframes cue {
+      0%,100% { transform: scaleX(.35); }
+      50% { transform: scaleX(1); }
+    }
+
+    section { padding: 125px var(--page-pad); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--accent);
+      font: 10px var(--mono);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 45px;
+    }
+
+    .section-label::after {
+      content: "";
+      height: 1px;
+      width: 65px;
+      background: var(--accent);
+      opacity: .7;
+    }
+
+    .manifesto {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .manifesto h2 {
+      max-width: 1150px;
+      font-size: clamp(38px, 6.4vw, 88px);
+      line-height: 1.12;
+      letter-spacing: -.065em;
+      font-weight: 500;
+    }
+
+    .manifesto h2 span {
+      color: var(--muted);
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    .manifesto h2 .highlight { color: var(--accent); }
+
+    .music-section { overflow: hidden; }
+
+    .music-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 65px;
+    }
+
+    .music-heading h2, .aviation-heading h2, .about-heading h2 {
+      font-size: clamp(48px, 8vw, 105px);
+      line-height: .9;
+      letter-spacing: -.08em;
+      font-weight: 500;
+    }
+
+    .music-heading h2 em, .aviation-heading h2 em {
+      font-family: var(--serif);
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .music-heading p {
+      max-width: 220px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .record-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(45px, 9vw, 130px);
+      align-items: center;
+    }
+
+    .record-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 480px;
+      perspective: 900px;
+    }
+
+    .record {
+      width: min(75vw, 390px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle, #242421 0px, #242421 2px, #171715 3px, #171715 5px);
+      box-shadow: 0 35px 80px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
+      display: grid;
+      place-items: center;
+      position: relative;
+      transition: transform .6s cubic-bezier(.2,.8,.2,1);
+      animation: recordSpin 8s linear infinite paused;
+    }
+
+    .record.playing { animation-play-state: running; }
+
+    @keyframes recordSpin { to { transform: rotate(360deg); } }
+
+    .record::before {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
+
+    .record-label {
+      width: 36%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #171715;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 15px;
+      font: 10px var(--mono);
+      letter-spacing: .08em;
+      line-height: 1.6;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .record-label::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #171715;
+    }
+
+    .record-shadow {
+      position: absolute;
+      width: 75%;
+      height: 25px;
+      bottom: 35px;
+      background: rgba(0,0,0,.25);
+      filter: blur(22px);
+      border-radius: 50%;
+    }
+
+    .record-caption {
+      position: absolute;
+      bottom: 5px;
+      font: 9px var(--mono);
+      letter-spacing: .15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .track-info { max-width: 510px; }
+
+    .track-number {
+      font: 10px var(--mono);
+      color: var(--accent);
+      letter-spacing: .15em;
+      margin-bottom: 20px;
+    }
+
+    .track-info h3 {
+      font-size: clamp(32px, 4vw, 55px);
+      letter-spacing: -.06em;
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+
+    .track-subtitle {
+      color: var(--muted);
+      font: 11px var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 35px;
+    }
+
+    .track-info p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .player-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .pill-button {
+      border: 1px solid var(--line);
+      padding: 13px 18px;
+      border-radius: 30px;
+      background: transparent;
+      color: var(--text);
+      font: 10px var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: none;
+      transition: .25s;
+    }
+
+    .pill-button.primary {
+      background: var(--accent);
+      color: #171715;
+      border-color: var(--accent);
+    }
+
+    .pill-button:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .soundcloud-wrap {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+    }
+
+    .soundcloud-wrap .mini-label {
+      font: 9px var(--mono);
+      color: var(--muted);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .soundcloud-wrap iframe {
+      width: 100%;
+      height: 166px;
+      border: 0;
+      border-radius: 4px;
+      background: var(--surface);
+    }
+
+    .bandcamp-link {
+      display: inline-block;
+      margin-top: 17px;
+      color: var(--accent);
+      font: 10px var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .aviation-section {
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aviation-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 70px;
+    }
+
+    .aviation-heading p {
+      max-width: 230px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .flight-panel {
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      padding: clamp(20px, 4vw, 45px);
+      min-height: 420px;
+      background:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    .flight-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font: 9px var(--mono);
+      color: var(--muted);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .flight-status { color: var(--accent); }
+
+    .radar {
+      position: absolute;
+      width: min(60vw, 420px);
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      left: 50%;
+      top: 53%;
+      transform: translate(-50%,-50%);
+      overflow: hidden;
+    }
+
+    .radar::before, .radar::after {
+      content: "";
+      position: absolute;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      inset: 20%;
+    }
+
+    .radar::after { inset: 40%; }
+
+    .radar-cross::before, .radar-cross::after {
+      content: "";
+      position: absolute;
+      background: var(--line);
+    }
+
+    .radar-cross::before {
+      height: 1px;
+      left: 0;
+      right: 0;
+      top: 50%;
+    }
+
+    .radar-cross::after {
+      width: 1px;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+    }
+
+    .radar-sweep {
+      position: absolute;
+      inset: 0;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(255,107,53,.15) 45deg, transparent 80deg);
+      border-radius: 50%;
+      animation: radarSpin 7s linear infinite;
+    }
+
+    @keyframes radarSpin { to { transform: rotate(360deg); } }
+
+    .radar-dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      top: 28%;
+      left: 65%;
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    .plane {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%) rotate(-25deg);
+      color: var(--accent);
+      filter: drop-shadow(0 0 12px rgba(255,107,53,.35));
+      animation: planeFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes planeFloat {
+      0%,100% { translate: 0 0; }
+      50% { translate: 0 -8px; }
+    }
+
+    .flight-bottom {
+      position: absolute;
+      bottom: 30px;
+      left: clamp(20px, 4vw, 45px);
+      right: clamp(20px, 4vw, 45px);
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+    }
+
+    .flight-id {
+      font: clamp(26px, 4vw, 48px) var(--mono);
+      letter-spacing: -.08em;
+    }
+
+    .flight-id small {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .15em;
+      margin-bottom: 8px;
+    }
+
+    .flight-stats {
+      display: flex;
+      gap: clamp(20px, 4vw, 55px);
+      text-align: right;
+    }
+
+    .flight-stats span {
+      display: block;
+      font: 9px var(--mono);
+      color: var(--muted);
+      letter-spacing: .1em;
+      margin-bottom: 8px;
+    }
+
+    .flight-stats strong {
+      font: 14px var(--mono);
+      color: var(--text);
+    }
+
+    .dashboard-note {
+      color: var(--muted);
+      font: 9px var(--mono);
+      margin-top: 15px;
+      letter-spacing: .05em;
+    }
+
+    .interests {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      margin-top: 60px;
+    }
+
+    .interest {
+      padding: 25px 20px 0 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .interest:not(:first-child) { padding-left: 25px; }
+    .interest:last-child { border-right: 0; }
+
+    .interest small {
+      color: var(--accent);
+      font: 9px var(--mono);
+      letter-spacing: .14em;
+    }
+
+    .interest h3 {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -.04em;
+      margin: 13px 0 8px;
+    }
+
+    .interest p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .about-section {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .about-heading h2 { font-size: clamp(45px, 7vw, 85px); }
+
+    .about-copy {
+      max-width: 650px;
+      padding-top: 12px;
+    }
+
+    .about-copy p {
+      font-size: clamp(18px, 2.3vw, 26px);
+      line-height: 1.65;
+      letter-spacing: -.025em;
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .about-copy p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-copy .signature {
+      font: italic 28px var(--serif);
+      color: var(--accent);
+      margin-top: 40px;
+    }
+
+    .links-section {
+      border-top: 1px solid var(--line);
+      padding-bottom: 100px;
+    }
+
+    .links-heading {
+      font-size: clamp(50px, 9vw, 115px);
+      letter-spacing: -.09em;
+      line-height: .9;
+      font-weight: 500;
+      margin-bottom: 65px;
+    }
+
+    .links-heading em {
+      font-family: var(--serif);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .link-list { border-top: 1px solid var(--line); }
+
+    .link-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 23px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding .25s, color .25s;
+    }
+
+    .link-row:hover {
+      padding-left: 14px;
+      padding-right: 14px;
+      color: var(--accent);
+    }
+
+    .link-row span:first-child {
+      font-size: clamp(20px, 3vw, 30px);
+      letter-spacing: -.05em;
+    }
+
+    .link-row span:last-child {
+      font: 10px var(--mono);
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px var(--page-pad);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font: 9px var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    footer strong { color: var(--text); font-weight: 400; }
+    footer .footer-mark { color: var(--accent); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: .12s; }
+    .delay-2 { transition-delay: .24s; }
+    .delay-3 { transition-delay: .36s; }
+
+    .easter-egg {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 50;
+      background: var(--accent);
+      color: #171715;
+      padding: 13px 17px;
+      border-radius: 3px;
+      font: 10px var(--mono);
+      letter-spacing: .08em;
+      opacity: 0;
+      transform: translateY(15px);
+      pointer-events: none;
+      transition: .35s;
+    }
+
+    .easter-egg.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 760px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+
+      .topbar { padding: 18px 22px; }
+      .nav { gap: 13px; }
+      .nav a { font-size: 8px; }
+      .nav a:nth-child(3) { display: none; }
+      .theme-toggle { font-size: 8px; padding: 8px 10px; }
+
+      .hero { min-height: 90svh; padding-top: 130px; }
+      .hero-orbit { width: 100vw; right: -45%; top: 20%; opacity: .4; }
+      .hero-bottom { align-items: start; flex-direction: column; }
+      .hero-meta { text-align: left; }
+      .scroll-cue { bottom: 20px; }
+
+      section { padding: 85px 22px; }
+      .manifesto { min-height: 60vh; }
+      .music-heading, .aviation-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .record-layout { grid-template-columns: 1fr; gap: 45px; }
+      .record-stage { min-height: 360px; }
+      .record { width: min(75vw, 320px); }
+      .record-caption { bottom: 0; }
+
+      .flight-panel { min-height: 390px; }
+      .radar { width: 75vw; top: 48%; }
+      .flight-bottom { flex-direction: column; align-items: start; }
+      .flight-stats { text-align: left; }
+      .interests { grid-template-columns: 1fr; }
+      .interest, .interest:not(:first-child) {
+        padding: 22px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .about-section { grid-template-columns: 1fr; gap: 35px; }
+      .links-section { padding-bottom: 70px; }
+      footer { flex-direction: column; align-items: start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 
 <body>
-<div class="grain"></div>
+  <div class="grain"></div>
+  <div class="scroll-progress"><span id="progress"></span></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="easter-egg" id="easterEgg">YOU FOUND THE FREQUENCY.</div>
 
-<!-- NAVIGATION -->
-<header class="relative z-30 px-6 md:px-12 py-7">
- <div class="flex justify-between items-center border-b rule pb-6">
-  <a href="#" class="font-bold tracking-tight text-lg">JG<span class="orange">.</span></a>
-  <div class="mono eyebrow hidden md:block">INDEPENDENT FREQUENCY / 001</div>
-  <nav class="flex gap-5 md:gap-9 mono text-[10px] tracking-widest">
-   <a class="nav-link" href="#music">MUSIC</a>
-   <a class="nav-link" href="#interests">INTERESTS</a>
-   <a class="nav-link" href="#about">ABOUT</a>
-  </nav>
- </div>
-</header>
+  <header class="topbar" id="topbar">
+    <a href="#home" class="brand">JISHNU<span>.</span></a>
+    <nav class="nav">
+      <a href="#music">Music</a>
+      <a href="#aviation">Interests</a>
+      <a href="#about">About</a>
+      <a href="#links">Links</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">◐ THEME</button>
+    </nav>
+  </header>
 
-<main>
-<!-- HERO -->
-<section class="px-6 md:px-12 pt-16 md:pt-28 pb-20">
- <div class="flex justify-between items-center mb-12 mono eyebrow">
-  <span>NEW DELHI, INDIA</span>
-  <span>CREATIVE MIND / EST. 2010</span>
- </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-orbit" id="heroOrbit">
+        <div class="orbit-dot"></div>
+      </div>
 
- <h1 class="hero-title">
-  <span>JISHNU</span>
-  <span class="second outline">GANGULY<span class="orange">.</span></span>
- </h1>
+      <div class="hero-content">
+        <div class="eyebrow reveal">Independent mind. Multiple frequencies.</div>
+        <h1 class="reveal delay-1">
+          JISHNU<br>
+          <span class="serif">Ganguly.</span>
+        </h1>
 
- <div class="grid md:grid-cols-2 gap-8 mt-16 items-end">
-  <p class="serif italic text-2xl md:text-4xl leading-tight max-w-lg">
-   Somewhere between <span class="orange">sound,</span> sky and the next big idea.
-  </p>
-  <div class="flex md:justify-end items-end gap-8">
-   <p class="mono eyebrow max-w-xs leading-6">
-    MUSIC MAKER. AVIATION ENTHUSIAST. BUILDER OF THINGS.
-    <br>EXPLORING THE SPACE BETWEEN CREATIVITY AND TECHNOLOGY.
-   </p>
-   <a href="#music" class="hidden md:grid w-12 h-12 rounded-full border rule place-items-center text-xl hover:bg-[#e8794d] hover:text-black transition">↘</a>
-  </div>
- </div>
-</section>
+        <div class="hero-bottom reveal delay-2">
+          <p class="hero-description">
+            Exploring the space between <strong>music, aviation and technology.</strong>
+            Making things, breaking patterns, and following whatever gets interesting.
+          </p>
+          <div class="hero-meta">
+            <span>EST. 2011</span><br>
+            CREATIVE PROJECTS & PERSONAL INTERESTS<br>
+            <span>ALWAYS IN PROGRESS ↗</span>
+          </div>
+        </div>
+      </div>
 
-<!-- MARQUEE -->
-<div class="border-y rule py-4 marquee mono text-xs tracking-[.3em] orange">
- <div class="marquee-inner">
-  MUSIC IS A FREQUENCY ✳ THE SKY IS NEVER THE LIMIT ✳ BUILD SOMETHING DIFFERENT ✳ MUSIC IS A FREQUENCY ✳ THE SKY IS NEVER THE LIMIT ✳ BUILD SOMETHING DIFFERENT ✳
- </div>
-</div>
+      <div class="scroll-cue"><i></i> SCROLL TO EXPLORE</div>
+    </section>
 
-<!-- MUSIC -->
-<section id="music" class="px-6 md:px-12 py-28 md:py-36">
- <div class="flex justify-between items-center mb-16">
-  <span class="mono eyebrow">01 / THE SOUND DEPARTMENT</span>
-  <span class="mono eyebrow">LATEST RELEASE — 2026</span>
- </div>
+    <section class="manifesto">
+      <div class="reveal">
+        <div class="section-label">A little bit of everything</div>
+        <h2>
+          Not built around one thing.
+          Interested in <span>many.</span>
+          Creating with curiosity,
+          exploring with <span class="highlight">intent.</span>
+        </h2>
+      </div>
+    </section>
 
- <div class="grid md:grid-cols-2 gap-14 items-center">
-  <div class="flex justify-center items-center py-8">
-   <div class="record" id="record">
-    <div class="record-label">
-     <span>BELLA<br>CIAO<br>✳<br>JG</span>
-    </div>
-   </div>
-  </div>
+    <section class="music-section" id="music">
+      <div class="section-label reveal">01 / The sound department</div>
 
-  <div>
-   <p class="mono orange text-xs tracking-[.25em] mb-5">THE LATEST RELEASE</p>
-   <h2 class="serif text-6xl md:text-8xl leading-none mb-5">Bella<br><i>Ciao.</i></h2>
-   <p class="text-sm text-[#a5a198] leading-7 max-w-md mb-9">
-    A musical release by Jishnu Ganguly. A little experimentation, a little nostalgia, and a sound of its own.
-   </p>
+      <div class="music-heading reveal">
+        <h2>Made to be<br><em>heard.</em></h2>
+        <p>A collection of sounds, ideas and interpretations. First up: a familiar song, seen from a different angle.</p>
+      </div>
 
-   <div class="border-y rule py-5 flex justify-between mono text-[10px] tracking-widest">
-    <span>RELEASE / EP</span><span>AVAILABLE NOW</span>
-   </div>
+      <div class="record-layout">
+        <div class="record-stage reveal">
+          <div class="record-shadow"></div>
+          <div class="record" id="record">
+            <div class="record-label">
+              BELLA CIAO<br>
+              THE<br>
+              INTERPRETATIONS
+            </div>
+          </div>
+          <div class="record-caption">SIDE A — THE INTERPRETATIONS</div>
+        </div>
 
-   <div class="flex flex-wrap gap-4 mt-8">
-    <a href="YOUR_SOUNDCLOUD_LINK" target="_blank" rel="noopener noreferrer"
-     class="bg-[#e8794d] text-[#10100f] px-7 py-4 text-xs font-bold tracking-widest hover:bg-white transition">
-     LISTEN ON SOUNDCLOUD ↗
-    </a>
-    <a href="YOUR_BANDCAMP_LINK" target="_blank" rel="noopener noreferrer"
-     class="border rule px-7 py-4 text-xs tracking-widest hover:border-[#e8794d] transition">
-     BANDCAMP ↗
-    </a>
-   </div>
-   <button id="spinButton" class="mono text-[10px] tracking-widest text-[#85847e] mt-9 hover:text-[#e8794d] transition">
-    ↻ SPIN THE RECORD
-   </button>
-  </div>
- </div>
-</section>
+        <div class="track-info reveal delay-1">
+          <div class="track-number">JG / RELEASE 001</div>
+          <h3>Bella Ciao:<br>The Interpretations</h3>
+          <div class="track-subtitle">An EP by Jishnu Ganguly</div>
 
-<!-- AVIATION -->
-<section id="interests" class="px-6 md:px-12 py-20 border-y rule">
- <div class="mono eyebrow mb-12">02 / BEYOND THE ORDINARY</div>
- <div class="aviation-art min-h-[390px] md:min-h-[500px] p-7 md:p-14 flex flex-col justify-between">
-  <div class="flex justify-between mono text-[10px] tracking-widest text-[#aaa49a]">
-   <span>AVIATION / FIELD NOTES</span>
-   <span>VIDP — DEL</span>
-  </div>
+          <p>
+            A personal take on a song that has travelled through generations,
+            cultures and countless interpretations. Reimagined through my own
+            musical perspective.
+          </p>
 
-  <div class="absolute inset-0 flex items-center justify-center opacity-70">
-   <svg viewBox="0 0 700 400" class="w-full max-w-3xl" aria-label="Abstract aircraft illustration">
-    <path class="flight-line" d="M80 300 Q300 40 620 180"/>
-    <path class="flight-line" d="M120 320 Q340 70 640 210" opacity=".3"/>
-    <g transform="translate(350 195) rotate(-17)">
-     <path class="flight-line" stroke-width="2" d="M-230 0 L-30 -13 L20 -110 L48 -112 L36 -13 L210 -3 L232 8 L36 8 L48 100 L22 103 L-30 9 L-230 8Z"/>
-    </g>
-    <circle cx="350" cy="195" r="145" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-dasharray="3 9"/>
-   </svg>
-  </div>
+          <div class="player-actions">
+            <button class="pill-button primary" id="spinButton">↻ Spin the record</button>
+            <a class="pill-button" href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations" target="_blank" rel="noopener noreferrer">Bandcamp ↗</a>
+          </div>
 
-  <div class="relative z-10">
-   <p class="mono text-xs text-[#e8794d] tracking-widest mb-4">THE WORLD ABOVE</p>
-   <h2 class="serif text-6xl md:text-8xl leading-none">Clear for<br><i>departure.</i></h2>
-  </div>
+          <div class="soundcloud-wrap">
+            <div class="mini-label">LISTEN / SOUNDCLOUD</div>
+            <iframe
+              title="Jishnu Ganguly on SoundCloud"
+              scrolling="no"
+              allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fjishnu-ganguly-661670492&color=%23ff6b35&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=false">
+            </iframe>
+            <a class="bandcamp-link" href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations" target="_blank" rel="noopener noreferrer">Explore the EP on Bandcamp ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="relative z-10 flex justify-between items-end">
-   <p class="mono text-[10px] leading-6 text-[#aaa49a]">
-    AIRCRAFT / AIRPORTS / FLIGHT DECKS<br>
-    AN OBSESSION WITH THE ART OF FLIGHT.
-   </p>
-   <span class="mono text-2xl text-[#e8794d]">DEL → ∞</span>
-  </div>
- </div>
-</section>
+    <section class="aviation-section" id="aviation">
+      <div class="section-label reveal">02 / Beyond the atmosphere</div>
 
-<!-- OTHER INTERESTS -->
-<section class="px-6 md:px-12 py-28">
- <div class="mono eyebrow mb-14">03 / THINGS THAT KEEP ME CURIOUS</div>
- <div class="space-y-0">
-  <a href="#about" class="project flex justify-between items-center gap-4">
-   <div><span class="mono eyebrow">01</span><h3 class="serif text-4xl md:text-6xl mt-2">Music & sound</h3></div>
-   <span class="orange text-3xl">↗</span>
-  </a>
-  <a href="#interests" class="project flex justify-between items-center gap-4">
-   <div><span class="mono eyebrow">02</span><h3 class="serif text-4xl md:text-6xl mt-2">Commercial aviation</h3></div>
-   <span class="orange text-3xl">↗</span>
-  </a>
-  <a href="#about" class="project flex justify-between items-center gap-4">
-   <div><span class="mono eyebrow">03</span><h3 class="serif text-4xl md:text-6xl mt-2">Technology & experiments</h3></div>
-   <span class="orange text-3xl">↗</span>
-  </a>
- </div>
-</section>
+      <div class="aviation-heading reveal">
+        <h2>Cleared for<br><em>curiosity.</em></h2>
+        <p>Aircraft, airports, systems, engineering and the extraordinary complexity of getting from A to B.</p>
+      </div>
 
-<!-- ABOUT -->
-<section id="about" class="px-6 md:px-12 py-24 border-t rule">
- <div class="grid md:grid-cols-2 gap-14">
-  <div>
-   <p class="mono eyebrow mb-7">04 / A LITTLE ABOUT ME</p>
-   <h2 class="serif text-6xl md:text-8xl leading-none">
-    Always<br><i>in progress.</i>
-   </h2>
-  </div>
-  <div class="flex flex-col justify-end">
-   <p class="text-[#aaa49a] leading-8 text-lg max-w-md">
-    I'm Jishnu — an independent creative from New Delhi, India.
-    I make music, follow aviation, experiment with technology and enjoy bringing random ideas to life.
-   </p>
-   <p class="serif italic text-2xl mt-8 orange">There's always something new to explore.</p>
-  </div>
- </div>
-</section>
+      <div class="flight-panel reveal">
+        <div class="flight-top">
+          <span>AVIATION INTERESTS / SYSTEM VIEW</span>
+          <span class="flight-status">● SYSTEM ONLINE</span>
+        </div>
 
-</main>
+        <div class="radar">
+          <div class="radar-cross"></div>
+          <div class="radar-sweep"></div>
+          <div class="radar-dot"></div>
+          <svg class="plane" viewBox="0 0 100 100" fill="none" aria-label="Stylised aircraft illustration">
+            <path d="M50 5 L58 43 L91 63 L91 72 L58 62 L55 88 L68 96 L68 100 L50 94 L32 100 L32 96 L45 88 L42 62 L9 72 L9 63 L42 43 Z" fill="currentColor"/>
+          </svg>
+        </div>
 
-<!-- FOOTER -->
-<footer class="px-6 md:px-12 pt-12 pb-8 border-t rule">
- <div class="flex flex-col md:flex-row justify-between gap-10">
-  <div>
-   <h2 class="hero-title !text-6xl md:!text-8xl">JG<span class="orange">.</span></h2>
-   <p class="mono eyebrow mt-6">MADE WITH CURIOSITY. NEW DELHI, INDIA.</p>
-  </div>
-  <div class="flex flex-col gap-4 mono text-xs tracking-widest">
-   <a class="nav-link" href="YOUR_SOUNDCLOUD_LINK" target="_blank" rel="noopener noreferrer">SOUNDCLOUD ↗</a>
-   <a class="nav-link" href="YOUR_BANDCAMP_LINK" target="_blank" rel="noopener noreferrer">BANDCAMP ↗</a>
-   <a class="nav-link" href="https://github.com/jishnu-ganguly" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
-  </div>
- </div>
- <div class="mt-16 pt-6 border-t rule flex justify-between mono text-[9px] tracking-widest text-[#85847e]">
-  <span>© <span id="year"></span> JISHNU GANGULY</span>
-  <span>INDEPENDENT FREQUENCY / 001</span>
- </div>
-</footer>
+        <div class="flight-bottom">
+          <div class="flight-id">
+            <small>PERSONAL AIRSPACE / PROFILE</small>
+            JG—001
+          </div>
+          <div class="flight-stats">
+            <div><span>ALTITUDE</span><strong>∞</strong></div>
+            <div><span>HEADING</span><strong>ANYWHERE</strong></div>
+            <div><span>STATUS</span><strong>EXPLORING</strong></div>
+          </div>
+        </div>
+      </div>
 
-<script>
-const record=document.getElementById('record');
-const spinButton=document.getElementById('spinButton');
+      <p class="dashboard-note">* Decorative interface — not a live flight-tracking display.</p>
 
-spinButton.addEventListener('click',()=>{
- record.classList.toggle('playing');
- spinButton.textContent=record.classList.contains('playing')
- ? 'Ⅱ PAUSE THE RECORD'
- : '↻ SPIN THE RECORD';
-});
+      <div class="interests reveal">
+        <div class="interest">
+          <small>01 / AVIATION</small>
+          <h3>Aircraft & Airports</h3>
+          <p>The machines, operations and infrastructure that connect the world.</p>
+        </div>
+        <div class="interest">
+          <small>02 / TECHNOLOGY</small>
+          <h3>How Things Work</h3>
+          <p>Digital tools, systems, experimentation and the next interesting idea.</p>
+        </div>
+        <div class="interest">
+          <small>03 / MUSIC</small>
+          <h3>Sound & Creation</h3>
+          <p>Production, experimentation and turning ideas into something you can hear.</p>
+        </div>
+      </div>
+    </section>
 
-document.getElementById('year').textContent=new Date().getFullYear();
+    <section class="about-section" id="about">
+      <div class="about-heading reveal">
+        <div class="section-label">03 / The person behind it</div>
+        <h2>A work<br>in <em style="font-family:var(--serif);color:var(--accent);font-weight:500;">progress.</em></h2>
+      </div>
 
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add('visible');
-   observer.unobserve(entry.target);
-  }
- });
-},{threshold:.12});
+      <div class="about-copy reveal delay-1">
+        <p>
+          I'm <strong>Jishnu Ganguly</strong> — a curious mind with interests
+          that don't always fit neatly into one category.
+        </p>
+        <p>
+          Music gives me a way to create. Aviation gives me a reason to look
+          up. Technology gives me the tools to explore what's possible.
+        </p>
+        <p>
+          This website is a small home for the things I make, the things I
+          enjoy, and the projects that happen along the way. It will keep
+          changing as I do.
+        </p>
+        <div class="signature">— Jishnu</div>
+      </div>
+    </section>
 
-document.querySelectorAll('section').forEach(el=>{
- el.classList.add('reveal');
- observer.observe(el);
-});
-</script>
+    <section class="links-section" id="links">
+      <div class="section-label reveal">04 / Find me elsewhere</div>
+      <h2 class="links-heading reveal">Open <em>channels.</em></h2>
+
+      <div class="link-list reveal">
+        <a class="link-row" href="https://soundcloud.com/jishnu-ganguly-661670492" target="_blank" rel="noopener noreferrer">
+          <span>SoundCloud</span><span>Listen ↗</span>
+        </a>
+        <a class="link-row" href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations" target="_blank" rel="noopener noreferrer">
+          <span>Bandcamp</span><span>Explore the EP ↗</span>
+        </a>
+        <a class="link-row" href="https://www.instagram.com/j1shnuke.wav" target="_blank" rel="noopener noreferrer">
+          <span>Instagram</span><span>Follow ↗</span>
+        </a>
+        <a class="link-row" href="https://www.youtube.com/@JishNuKe_9" target="_blank" rel="noopener noreferrer">
+          <span>YouTube</span><span>Watch ↗</span>
+        </a>
+        <a class="link-row" href="https://github.com/jishnu-ganguly" target="_blank" rel="noopener noreferrer">
+          <span>GitHub</span><span>Build ↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>JISHNU GANGULY</strong> <span class="footer-mark">©</span> 2026</div>
+    <div>EST. 2011 — ALWAYS IN PROGRESS</div>
+    <a href="#home">BACK TO TOP ↑</a>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById("cursor");
+    const ring = document.getElementById("cursorRing");
+
+    if (window.matchMedia("(pointer: fine)").matches) {
+      window.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        ring.style.left = e.clientX + "px";
+        ring.style.top = e.clientY + "px";
+      });
+
+      document.querySelectorAll("a, button, .record").forEach((item) => {
+        item.addEventListener("mouseenter", () => ring.classList.add("active"));
+        item.addEventListener("mouseleave", () => ring.classList.remove("active"));
+      });
+    }
+
+    // Scroll progress, navigation and cinematic parallax
+    const progress = document.getElementById("progress");
+    const topbar = document.getElementById("topbar");
+    const orbit = document.getElementById("heroOrbit");
+
+    function updateScroll() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const amount = scrollable > 0 ? window.scrollY / scrollable : 0;
+
+      progress.style.transform = `scaleX(${amount})`;
+      topbar.classList.toggle("scrolled", window.scrollY > 40);
+
+      if (window.scrollY < window.innerHeight * 1.2) {
+        orbit.style.setProperty("--hero-shift", `${window.scrollY * 0.18}px`);
+      }
+    }
+
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    updateScroll();
+
+    // Reveal sections as they enter the screen
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // Interactive vinyl
+    const record = document.getElementById("record");
+    const spinButton = document.getElementById("spinButton");
+    let spinning = false;
+
+    spinButton.addEventListener("click", () => {
+      spinning = !spinning;
+      record.classList.toggle("playing", spinning);
+      spinButton.textContent = spinning ? "Ⅱ Pause the record" : "↻ Spin the record";
+    });
+
+    // Light / dark theme switch
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("jg-theme");
+
+    if (savedTheme) {
+      document.documentElement.dataset.theme = savedTheme;
+    }
+
+    function updateThemeLabel() {
+      const isLight = document.documentElement.dataset.theme === "light";
+      themeToggle.textContent = isLight ? "☼ LIGHT" : "◐ THEME";
+    }
+
+    updateThemeLabel();
+
+    themeToggle.addEventListener("click", () => {
+      const isLight = document.documentElement.dataset.theme === "light";
+      const nextTheme = isLight ? "dark" : "light";
+
+      document.documentElement.dataset.theme = nextTheme;
+      localStorage.setItem("jg-theme", nextTheme);
+      updateThemeLabel();
+    });
+
+    // Easter egg: type "wing" anywhere on the page
+    let typed = "";
+    const egg = document.getElementById("easterEgg");
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key.length !== 1) return;
+
+      typed = (typed + e.key.toLowerCase()).slice(-4);
+
+      if (typed === "wing") {
+        egg.classList.add("show");
+        setTimeout(() => egg.classList.remove("show"), 2800);
+        typed = "";
+      }
+    });
+
+    // Small vinyl interaction easter egg
+    let recordClicks = 0;
+    record.addEventListener("click", () => {
+      recordClicks++;
+
+      if (recordClicks === 5) {
+        egg.textContent = "FIVE SPINS. ONE VERY GOOD RECORD.";
+        egg.classList.add("show");
+        setTimeout(() => {
+          egg.classList.remove("show");
+          egg.textContent = "YOU FOUND THE FREQUENCY.";
+        }, 2800);
+        recordClicks = 0;
+      }
+    });
+  </script>
 </body>
 </html>
