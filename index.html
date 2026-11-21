@@ -1,169 +1,317 @@
+
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jishnu Ganguly</title>
-  <script src="https://tailwindcss.com"></script>
-  <link href="https://googleapis.com" rel="stylesheet">
-  <style>
-    body {
-      background-color: #09090b;
-      color: #fafafa;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-    }
-    .serif { font-family: 'Instrument Serif', serif; }
-    .mono { font-family: 'JetBrains Mono', monospace; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10100f">
+<title>Jishnu Ganguly — Independent Frequency</title>
+<meta name="description" content="The personal website of Jishnu Ganguly. Music, aviation, technology and everything in between.">
 
-    /* Subtle Film Grain Overlay */
-    .grain {
-      position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://w3.org id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
-    /* Spinning Vinyl Animation */
-    @keyframes spinSlow { to { transform: rotate(360deg); } }
-    .vinyl-spin { animation: spinSlow 6s linear infinite; }
-    .vinyl-paused { animation-play-state: paused; }
-  </style>
+<style>
+:root {
+  --bg:#10100f;
+  --paper:#e9e5dc;
+  --muted:#85847e;
+  --accent:#e8794d;
+  --line:rgba(233,229,220,.15);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--paper);
+  font-family:'DM Sans',sans-serif;overflow-x:hidden;
+}
+::selection{background:var(--accent);color:#10100f}
+.mono{font-family:'DM Mono',monospace}
+.serif{font-family:'Playfair Display',serif}
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.12;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+.nav-link{transition:color .3s}
+.nav-link:hover{color:var(--accent)}
+.hero-title{
+  font-size:clamp(4.5rem,13.5vw,12rem);
+  line-height:.77;letter-spacing:-.105em;font-weight:800;
+}
+.hero-title span{display:block}
+.hero-title .second{padding-left:12%}
+.outline{
+  color:transparent;-webkit-text-stroke:1px rgba(233,229,220,.75);
+}
+.orange{color:var(--accent)}
+.rule{border-color:var(--line)}
+.eyebrow{font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.record{
+  width:min(66vw,330px);aspect-ratio:1;border-radius:50%;
+  background:repeating-radial-gradient(circle,#171717 0px,#171717 2px,#292826 3px,#151515 4px);
+  box-shadow:0 20px 80px #0009,0 0 0 1px #ffffff12;
+  position:relative;display:grid;place-items:center;
+  animation:spin 12s linear infinite;animation-play-state:paused;
+}
+.record.playing{animation-play-state:running}
+.record:before{
+  content:"";position:absolute;inset:30%;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#f6a47b,#bd5338 50%,#6b241d);
+}
+.record:after{
+  content:"";position:absolute;width:8px;height:8px;border-radius:50%;
+  background:#111;z-index:2;
+}
+.record-label{
+  position:absolute;z-index:1;width:24%;aspect-ratio:1;
+  border:1px solid #ffffff40;border-radius:50%;
+  display:grid;place-items:center;text-align:center;
+  color:#f5e8d9;font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.1em;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.marquee{overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-block;animation:marquee 25s linear infinite}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.project{
+  border-top:1px solid var(--line);padding:25px 0;
+  transition:padding .3s,color .3s;
+}
+.project:hover{padding-left:12px;color:var(--accent)}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.aviation-art{
+  background:radial-gradient(ellipse at 70% 40%,#39332d,#1a1917 65%);
+  position:relative;overflow:hidden;
+}
+.flight-line{stroke:#e8794d;stroke-width:1;fill:none;opacity:.8}
+.big-number{font-size:clamp(5rem,15vw,12rem);letter-spacing:-.09em}
+button{cursor:pointer}
+@media(max-width:640px){
+ .hero-title{font-size:18vw}
+ .hero-title .second{padding-left:3%}
+ .record{width:65vw}
+}
+</style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black">
-  <div class="grain"></div>
 
-  <!-- Minimal Floating Nav -->
-  <nav class="max-w-5xl mx-auto px-6 py-8 flex justify-between items-center text-xs mono uppercase tracking-widest text-zinc-400">
-    <span class="text-white font-semibold">JISHNU GANGULY</span>
-    <div class="flex gap-6">
-      <a href="#music" class="hover:text-white transition">Music</a>
-      <a href="#aviation" class="hover:text-white transition">Aviation</a>
-      <a href="#connect" class="hover:text-white transition">Connect</a>
-    </div>
+<body>
+<div class="grain"></div>
+
+<!-- NAVIGATION -->
+<header class="relative z-30 px-6 md:px-12 py-7">
+ <div class="flex justify-between items-center border-b rule pb-6">
+  <a href="#" class="font-bold tracking-tight text-lg">JG<span class="orange">.</span></a>
+  <div class="mono eyebrow hidden md:block">INDEPENDENT FREQUENCY / 001</div>
+  <nav class="flex gap-5 md:gap-9 mono text-[10px] tracking-widest">
+   <a class="nav-link" href="#music">MUSIC</a>
+   <a class="nav-link" href="#interests">INTERESTS</a>
+   <a class="nav-link" href="#about">ABOUT</a>
   </nav>
+ </div>
+</header>
 
-  <!-- Editorial Hero -->
-  <header class="max-w-5xl mx-auto px-6 pt-16 pb-28">
-    <p class="mono text-xs text-zinc-500 uppercase tracking-widest mb-6">
-      15 y/o • New Delhi • Sound & Altitude
-    </p>
-    <h1 class="serif text-6xl sm:text-8xl md:text-9xl font-normal tracking-tight leading-[0.92] text-white mb-8">
-      Making noise on the ground, <span class="italic text-zinc-400">head in the clouds.</span>
-    </h1>
-    <p class="text-zinc-400 text-lg sm:text-xl max-w-xl font-light leading-relaxed">
-      I’m Jishnu—a 15-year-old musician and aviation obsessive. Just dropped my <span class="text-white">Bella Ciao EP</span>, with more releases and side projects on deck.
-    </p>
-  </header>
+<main>
+<!-- HERO -->
+<section class="px-6 md:px-12 pt-16 md:pt-28 pb-20">
+ <div class="flex justify-between items-center mb-12 mono eyebrow">
+  <span>NEW DELHI, INDIA</span>
+  <span>CREATIVE MIND / EST. 2010</span>
+ </div>
 
-  <!-- Music Showcase (Interactive Vinyl) -->
-  <section id="music" class="max-w-5xl mx-auto px-6 py-24 border-t border-white/10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-      
-      <!-- Interactive Vinyl Record -->
-      <div class="md:col-span-5 flex flex-col items-center">
-        <div id="vinyl" onclick="toggleSpin()" title="Click to spin/pause"
-          class="vinyl-spin vinyl-paused cursor-pointer w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-gradient-to-tr from-zinc-950 via-zinc-800 to-zinc-950 border border-white/15 shadow-2xl flex items-center justify-center relative group">
-          <!-- Vinyl Grooves -->
-          <div class="w-56 h-56 rounded-full border border-white/5 flex items-center justify-center">
-            <div class="w-40 h-40 rounded-full border border-white/5 flex items-center justify-center">
-              <!-- Center Label -->
-              <div class="w-24 h-24 rounded-full bg-gradient-to-br from-rose-500 to-amber-500 flex flex-col items-center justify-center text-black text-center p-2 shadow-inner">
-                <span class="mono text-[9px] font-bold uppercase tracking-tighter">BELLA CIAO</span>
-                <span class="text-[8px] opacity-75">EP • 2026</span>
-                <div class="w-3 h-3 rounded-full bg-zinc-950 mt-1"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span id="spin-hint" class="mono text-[11px] text-zinc-500 mt-4">CLICK DISC TO SPIN</span>
-      </div>
+ <h1 class="hero-title">
+  <span>JISHNU</span>
+  <span class="second outline">GANGULY<span class="orange">.</span></span>
+ </h1>
 
-      <!-- Release Details -->
-      <div class="md:col-span-7">
-        <span class="mono text-xs text-rose-400 uppercase tracking-widest">01 / Latest Release</span>
-        <h2 class="serif text-5xl sm:text-6xl mt-2 mb-4">Bella Ciao — EP</h2>
-        <p class="text-zinc-400 leading-relaxed mb-8 max-w-lg">
-          Out now on SoundCloud, with Bandcamp arriving shortly. Built late at night with loud headphones and zero shortcuts.
-        </p>
+ <div class="grid md:grid-cols-2 gap-8 mt-16 items-end">
+  <p class="serif italic text-2xl md:text-4xl leading-tight max-w-lg">
+   Somewhere between <span class="orange">sound,</span> sky and the next big idea.
+  </p>
+  <div class="flex md:justify-end items-end gap-8">
+   <p class="mono eyebrow max-w-xs leading-6">
+    MUSIC MAKER. AVIATION ENTHUSIAST. BUILDER OF THINGS.
+    <br>EXPLORING THE SPACE BETWEEN CREATIVITY AND TECHNOLOGY.
+   </p>
+   <a href="#music" class="hidden md:grid w-12 h-12 rounded-full border rule place-items-center text-xl hover:bg-[#e8794d] hover:text-black transition">↘</a>
+  </div>
+ </div>
+</section>
 
-        <div class="flex flex-wrap gap-4">
-          <a href="YOUR_SOUNDCLOUD_LINK" target="_blank"
-            class="px-7 py-3.5 rounded-full bg-white text-black text-sm font-medium hover:bg-zinc-200 transition">
-            Listen on SoundCloud ↗
-          </a>
-          <span class="px-7 py-3.5 rounded-full border border-white/15 text-zinc-400 text-sm">
-            Bandcamp — Coming Soon
-          </span>
-        </div>
-      </div>
+<!-- MARQUEE -->
+<div class="border-y rule py-4 marquee mono text-xs tracking-[.3em] orange">
+ <div class="marquee-inner">
+  MUSIC IS A FREQUENCY ✳ THE SKY IS NEVER THE LIMIT ✳ BUILD SOMETHING DIFFERENT ✳ MUSIC IS A FREQUENCY ✳ THE SKY IS NEVER THE LIMIT ✳ BUILD SOMETHING DIFFERENT ✳
+ </div>
+</div>
 
+<!-- MUSIC -->
+<section id="music" class="px-6 md:px-12 py-28 md:py-36">
+ <div class="flex justify-between items-center mb-16">
+  <span class="mono eyebrow">01 / THE SOUND DEPARTMENT</span>
+  <span class="mono eyebrow">LATEST RELEASE — 2026</span>
+ </div>
+
+ <div class="grid md:grid-cols-2 gap-14 items-center">
+  <div class="flex justify-center items-center py-8">
+   <div class="record" id="record">
+    <div class="record-label">
+     <span>BELLA<br>CIAO<br>✳<br>JG</span>
     </div>
-  </section>
+   </div>
+  </div>
 
-  <!-- Aviation & Interests (Clean Editorial List) -->
-  <section id="aviation" class="max-w-5xl mx-auto px-6 py-24 border-t border-white/10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-      <div class="md:col-span-5">
-        <span class="mono text-xs text-sky-400 uppercase tracking-widest">02 / Off the Clock</span>
-        <h2 class="serif text-5xl mt-2">Aviation &<br><span class="italic text-zinc-400">Everything Else.</span></h2>
-      </div>
+  <div>
+   <p class="mono orange text-xs tracking-[.25em] mb-5">THE LATEST RELEASE</p>
+   <h2 class="serif text-6xl md:text-8xl leading-none mb-5">Bella<br><i>Ciao.</i></h2>
+   <p class="text-sm text-[#a5a198] leading-7 max-w-md mb-9">
+    A musical release by Jishnu Ganguly. A little experimentation, a little nostalgia, and a sound of its own.
+   </p>
 
-      <div class="md:col-span-7 divide-y divide-white/10">
-        <div class="py-6 first:pt-0">
-          <div class="flex justify-between items-baseline mb-2">
-            <h3 class="text-lg font-medium">Commercial Aviation</h3>
-            <span class="mono text-xs text-zinc-500">VIDP / DEL</span>
-          </div>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Deep into aircraft engineering, long-haul widebodies, flight simulators, and tracking traffic overhead.
-          </p>
-        </div>
+   <div class="border-y rule py-5 flex justify-between mono text-[10px] tracking-widest">
+    <span>RELEASE / EP</span><span>AVAILABLE NOW</span>
+   </div>
 
-        <div class="py-6">
-          <div class="flex justify-between items-baseline mb-2">
-            <h3 class="text-lg font-medium">Music Production</h3>
-            <span class="mono text-xs text-zinc-500">DAW & SYNTHS</span>
-          </div>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Experimenting with melodies, remixes, and electronic arrangements—starting with the Bella Ciao EP.
-          </p>
-        </div>
+   <div class="flex flex-wrap gap-4 mt-8">
+    <a href="YOUR_SOUNDCLOUD_LINK" target="_blank" rel="noopener noreferrer"
+     class="bg-[#e8794d] text-[#10100f] px-7 py-4 text-xs font-bold tracking-widest hover:bg-white transition">
+     LISTEN ON SOUNDCLOUD ↗
+    </a>
+    <a href="YOUR_BANDCAMP_LINK" target="_blank" rel="noopener noreferrer"
+     class="border rule px-7 py-4 text-xs tracking-widest hover:border-[#e8794d] transition">
+     BANDCAMP ↗
+    </a>
+   </div>
+   <button id="spinButton" class="mono text-[10px] tracking-widest text-[#85847e] mt-9 hover:text-[#e8794d] transition">
+    ↻ SPIN THE RECORD
+   </button>
+  </div>
+ </div>
+</section>
 
-        <div class="py-6">
-          <div class="flex justify-between items-baseline mb-2">
-            <h3 class="text-lg font-medium">Tinkering</h3>
-            <span class="mono text-xs text-zinc-500">SIDE QUESTS</span>
-          </div>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Building random web projects, exploring tech, and learning by shipping stuff online.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- AVIATION -->
+<section id="interests" class="px-6 md:px-12 py-20 border-y rule">
+ <div class="mono eyebrow mb-12">02 / BEYOND THE ORDINARY</div>
+ <div class="aviation-art min-h-[390px] md:min-h-[500px] p-7 md:p-14 flex flex-col justify-between">
+  <div class="flex justify-between mono text-[10px] tracking-widest text-[#aaa49a]">
+   <span>AVIATION / FIELD NOTES</span>
+   <span>VIDP — DEL</span>
+  </div>
 
-  <!-- Minimal Footer / Connect -->
-  <footer id="connect" class="max-w-5xl mx-auto px-6 py-20 border-t border-white/10">
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8">
-      <div>
-        <span class="mono text-xs text-zinc-500 uppercase tracking-widest">03 / Connect</span>
-        <h2 class="serif text-4xl sm:text-5xl mt-2">Find me online.</h2>
-      </div>
-      <div class="flex flex-wrap gap-6 text-sm font-medium">
-        <a href="YOUR_SOUNDCLOUD_LINK" target="_blank" class="underline underline-offset-4 decoration-zinc-600 hover:decoration-white">SoundCloud</a>
-        <a href="YOUR_BANDCAMP_LINK" target="_blank" class="underline underline-offset-4 decoration-zinc-600 hover:decoration-white">Bandcamp</a>
-        <a href="https://github.com" target="_blank" class="underline underline-offset-4 decoration-zinc-600 hover:decoration-white">GitHub</a>
-      </div>
-    </div>
-    <p class="mono text-xs text-zinc-600 mt-16">© 2026 JISHNU GANGULY</p>
-  </footer>
+  <div class="absolute inset-0 flex items-center justify-center opacity-70">
+   <svg viewBox="0 0 700 400" class="w-full max-w-3xl" aria-label="Abstract aircraft illustration">
+    <path class="flight-line" d="M80 300 Q300 40 620 180"/>
+    <path class="flight-line" d="M120 320 Q340 70 640 210" opacity=".3"/>
+    <g transform="translate(350 195) rotate(-17)">
+     <path class="flight-line" stroke-width="2" d="M-230 0 L-30 -13 L20 -110 L48 -112 L36 -13 L210 -3 L232 8 L36 8 L48 100 L22 103 L-30 9 L-230 8Z"/>
+    </g>
+    <circle cx="350" cy="195" r="145" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-dasharray="3 9"/>
+   </svg>
+  </div>
 
-  <script>
-    function toggleSpin() {
-      const v = document.getElementById('vinyl');
-      const hint = document.getElementById('spin-hint');
-      v.classList.toggle('vinyl-paused');
-      hint.textContent = v.classList.contains('vinyl-paused') ? 'CLICK DISC TO SPIN' : 'SPINNING • CLICK TO PAUSE';
-    }
-  </script>
+  <div class="relative z-10">
+   <p class="mono text-xs text-[#e8794d] tracking-widest mb-4">THE WORLD ABOVE</p>
+   <h2 class="serif text-6xl md:text-8xl leading-none">Clear for<br><i>departure.</i></h2>
+  </div>
+
+  <div class="relative z-10 flex justify-between items-end">
+   <p class="mono text-[10px] leading-6 text-[#aaa49a]">
+    AIRCRAFT / AIRPORTS / FLIGHT DECKS<br>
+    AN OBSESSION WITH THE ART OF FLIGHT.
+   </p>
+   <span class="mono text-2xl text-[#e8794d]">DEL → ∞</span>
+  </div>
+ </div>
+</section>
+
+<!-- OTHER INTERESTS -->
+<section class="px-6 md:px-12 py-28">
+ <div class="mono eyebrow mb-14">03 / THINGS THAT KEEP ME CURIOUS</div>
+ <div class="space-y-0">
+  <a href="#about" class="project flex justify-between items-center gap-4">
+   <div><span class="mono eyebrow">01</span><h3 class="serif text-4xl md:text-6xl mt-2">Music & sound</h3></div>
+   <span class="orange text-3xl">↗</span>
+  </a>
+  <a href="#interests" class="project flex justify-between items-center gap-4">
+   <div><span class="mono eyebrow">02</span><h3 class="serif text-4xl md:text-6xl mt-2">Commercial aviation</h3></div>
+   <span class="orange text-3xl">↗</span>
+  </a>
+  <a href="#about" class="project flex justify-between items-center gap-4">
+   <div><span class="mono eyebrow">03</span><h3 class="serif text-4xl md:text-6xl mt-2">Technology & experiments</h3></div>
+   <span class="orange text-3xl">↗</span>
+  </a>
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="px-6 md:px-12 py-24 border-t rule">
+ <div class="grid md:grid-cols-2 gap-14">
+  <div>
+   <p class="mono eyebrow mb-7">04 / A LITTLE ABOUT ME</p>
+   <h2 class="serif text-6xl md:text-8xl leading-none">
+    Always<br><i>in progress.</i>
+   </h2>
+  </div>
+  <div class="flex flex-col justify-end">
+   <p class="text-[#aaa49a] leading-8 text-lg max-w-md">
+    I'm Jishnu — an independent creative from New Delhi, India.
+    I make music, follow aviation, experiment with technology and enjoy bringing random ideas to life.
+   </p>
+   <p class="serif italic text-2xl mt-8 orange">There's always something new to explore.</p>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="px-6 md:px-12 pt-12 pb-8 border-t rule">
+ <div class="flex flex-col md:flex-row justify-between gap-10">
+  <div>
+   <h2 class="hero-title !text-6xl md:!text-8xl">JG<span class="orange">.</span></h2>
+   <p class="mono eyebrow mt-6">MADE WITH CURIOSITY. NEW DELHI, INDIA.</p>
+  </div>
+  <div class="flex flex-col gap-4 mono text-xs tracking-widest">
+   <a class="nav-link" href="YOUR_SOUNDCLOUD_LINK" target="_blank" rel="noopener noreferrer">SOUNDCLOUD ↗</a>
+   <a class="nav-link" href="YOUR_BANDCAMP_LINK" target="_blank" rel="noopener noreferrer">BANDCAMP ↗</a>
+   <a class="nav-link" href="https://github.com/jishnu-ganguly" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+  </div>
+ </div>
+ <div class="mt-16 pt-6 border-t rule flex justify-between mono text-[9px] tracking-widest text-[#85847e]">
+  <span>© <span id="year"></span> JISHNU GANGULY</span>
+  <span>INDEPENDENT FREQUENCY / 001</span>
+ </div>
+</footer>
+
+<script>
+const record=document.getElementById('record');
+const spinButton=document.getElementById('spinButton');
+
+spinButton.addEventListener('click',()=>{
+ record.classList.toggle('playing');
+ spinButton.textContent=record.classList.contains('playing')
+ ? 'Ⅱ PAUSE THE RECORD'
+ : '↻ SPIN THE RECORD';
+});
+
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('visible');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.12});
+
+document.querySelectorAll('section').forEach(el=>{
+ el.classList.add('reveal');
+ observer.observe(el);
+});
+</script>
 </body>
 </html>
