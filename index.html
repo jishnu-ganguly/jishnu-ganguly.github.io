@@ -2,1836 +2,2039 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#11110f">
-<meta name="description" content="Jishnu Ganguly — independent music, aviation, technology and other things worth exploring.">
-<title>Jishnu Ganguly — Independent Creative</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg: #11110f;
-  --surface: #191916;
-  --surface-2: #20201c;
-  --text: #f1eee6;
-  --muted: #99968c;
-  --line: rgba(241,238,230,.14);
-  --accent: #ff693b;
-  --accent-soft: rgba(255,105,59,.12);
-  --nav-bg: rgba(17,17,15,.86);
-  --shadow: rgba(0,0,0,.25);
-}
-
-html[data-theme="light"] {
-  --bg: #f1eee6;
-  --surface: #e7e3d9;
-  --surface-2: #ddd8cd;
-  --text: #191916;
-  --muted: #706d64;
-  --line: rgba(25,25,22,.16);
-  --accent: #d94d27;
-  --accent-soft: rgba(217,77,39,.10);
-  --nav-bg: rgba(241,238,230,.88);
-  --shadow: rgba(0,0,0,.08);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: "DM Sans", sans-serif;
-  line-height: 1.65;
-  overflow-x: hidden;
-  transition: background .3s, color .3s;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: .14;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button, select, input {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-::selection {
-  background: var(--accent);
-  color: #fff;
-}
-
-.container {
-  width: min(1160px, calc(100% - 48px));
-  margin: auto;
-}
-
-.mono {
-  font-family: "DM Mono", monospace;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  font-size: 10px;
-}
-
-.muted {
-  color: var(--muted);
-}
-
-.accent {
-  color: var(--accent);
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--accent);
-  margin-bottom: 24px;
-}
-
-.eyebrow::before {
-  content: "";
-  height: 1px;
-  width: 30px;
-  background: var(--accent);
-}
-
-.section {
-  padding: 115px 0;
-  border-top: 1px solid var(--line);
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 30px;
-  margin-bottom: 55px;
-}
-
-.section-heading h2 {
-  font-family: "Playfair Display", serif;
-  font-weight: 500;
-  font-size: clamp(42px, 6vw, 72px);
-  line-height: 1.08;
-  letter-spacing: -.04em;
-}
-
-.section-heading p {
-  max-width: 340px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* NAVIGATION */
-
-nav {
-  height: 76px;
-  position: fixed;
-  z-index: 100;
-  inset: 0 0 auto;
-  background: var(--nav-bg);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav-inner {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.brand {
-  font-weight: 700;
-  letter-spacing: -.04em;
-  font-size: 17px;
-}
-
-.brand span {
-  color: var(--accent);
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 27px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--muted);
-  font-size: 12px;
-  transition: color .2s;
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
-
-.theme-toggle {
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--text);
-  border-radius: 50px;
-  padding: 9px 13px;
-  font-size: 11px;
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  color: var(--text);
-  border: 0;
-  font-size: 23px;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 760px;
-  padding: 180px 0 100px;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 430px;
-  height: 430px;
-  right: -150px;
-  top: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 850px;
-}
-
-.hero-location {
-  color: var(--muted);
-  margin-bottom: 35px;
-}
-
-.hero h1 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(70px, 11vw, 132px);
-  line-height: .91;
-  letter-spacing: -.065em;
-  font-weight: 500;
-  margin-bottom: 32px;
-}
-
-.hero h1 span {
-  color: var(--accent);
-  font-style: italic;
-  display: block;
-}
-
-.hero-description {
-  font-size: clamp(16px, 2vw, 19px);
-  max-width: 520px;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 35px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 13px;
-  flex-wrap: wrap;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 13px;
-  padding: 14px 20px;
-  border: 1px solid var(--line);
-  font-size: 12px;
-  transition: .25s;
-}
-
-.button-primary {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-.button:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-}
-
-.hero-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 100px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-}
-
-.hero-bottom strong {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.scroll-indicator {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* MUSIC */
-
-.music-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  align-items: center;
-  margin-bottom: 65px;
-}
-
-.featured-art {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.featured-art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .7s;
-}
-
-.featured-art:hover img {
-  transform: scale(1.035);
-}
-
-.featured-label {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  background: var(--bg);
-  padding: 9px 13px;
-  color: var(--text);
-}
-
-.featured-copy h3 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(38px, 5vw, 62px);
-  line-height: 1.08;
-  font-weight: 500;
-  letter-spacing: -.04em;
-  margin-bottom: 20px;
-}
-
-.featured-copy > p {
-  color: var(--muted);
-  max-width: 430px;
-  font-size: 14px;
-  margin-bottom: 26px;
-}
-
-.release-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  color: var(--muted);
-  margin-bottom: 27px;
-}
-
-.release-meta span {
-  font-size: 10px;
-}
-
-.artwork-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  border-top: 1px solid var(--line);
-  margin-top: 35px;
-}
-
-.artwork-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.artwork-card {
-  min-width: 0;
-}
-
-.artwork-image {
-  aspect-ratio: 1 / 1;
-  background: var(--surface);
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.artwork-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .5s;
-}
-
-.artwork-card:hover img {
-  transform: scale(1.06);
-}
-
-.artwork-card h4 {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 3px;
-}
-
-.artwork-card p {
-  color: var(--muted);
-  font-size: 11px;
-}
-
-/* SOUND CLOUD PLAYER */
-
-.player-section {
-  margin-top: 75px;
-  padding: 30px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-}
-
-.player-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.player-header h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 27px;
-  font-weight: 500;
-}
-
-.player-header span {
-  color: var(--muted);
-}
-
-.soundcloud-wrap {
-  width: 100%;
-  overflow: hidden;
-  background: #20201c;
-}
-
-.soundcloud-wrap iframe {
-  display: block;
-  width: 100%;
-  height: 300px;
-  border: 0;
-}
-
-.player-note {
-  color: var(--muted);
-  font-size: 11px;
-  margin-top: 14px;
-}
-
-/* SUPPORT */
-
-.support-strip {
-  margin-top: 35px;
-  padding: 28px 30px;
-  border: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-}
-
-.support-strip h3 {
-  font-family: "Playfair Display", serif;
-  font-weight: 500;
-  font-size: 25px;
-}
-
-.support-strip p {
-  color: var(--muted);
-  font-size: 12px;
-  max-width: 540px;
-}
-
-/* AVIATION */
-
-.aviation-intro {
-  max-width: 650px;
-  margin-bottom: 45px;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.aviation-panel {
-  border: 1px solid var(--line);
-  background: var(--surface);
-}
-
-.aviation-top {
-  padding: 25px;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.aviation-top h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 27px;
-  font-weight: 500;
-}
-
-.live-indicator {
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.live-indicator::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-.route-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 14px;
-  padding: 25px;
-}
-
-.field label {
-  display: block;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.field select, .field input {
-  width: 100%;
-  background: var(--bg);
-  color: var(--text);
-  border: 1px solid var(--line);
-  padding: 13px;
-  outline: none;
-  border-radius: 0;
-}
-
-.field select:focus, .field input:focus {
-  border-color: var(--accent);
-}
-
-.route-form button {
-  align-self: end;
-  border: 0;
-  background: var(--accent);
-  color: white;
-  padding: 14px 20px;
-}
-
-.route-result {
-  margin: 0 25px 25px;
-  padding: 25px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  display: none;
-}
-
-.route-result.visible {
-  display: block;
-}
-
-.route-line {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 25px 0;
-}
-
-.route-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-
-.route-track {
-  flex: 1;
-  height: 1px;
-  background: var(--accent);
-  position: relative;
-}
-
-.route-track::after {
-  content: "✈";
-  position: absolute;
-  right: 40%;
-  top: -14px;
-  color: var(--accent);
-  font-size: 17px;
-}
-
-.route-airports {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.route-airports strong {
-  display: block;
-  font-size: 22px;
-}
-
-.route-airports small {
-  color: var(--muted);
-}
-
-.route-distance {
-  font-family: "Playfair Display", serif;
-  font-size: 32px;
-  margin-top: 20px;
-}
-
-.route-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.small-button {
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--text);
-  padding: 10px 13px;
-  font-size: 11px;
-}
-
-.small-button:hover {
-  border-color: var(--accent);
-}
-
-.aviation-tools {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 25px;
-}
-
-.tool-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: 25px;
-}
-
-.tool-card h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 25px;
-  font-weight: 500;
-  margin-bottom: 9px;
-}
-
-.tool-card p {
-  color: var(--muted);
-  font-size: 12px;
-  margin-bottom: 18px;
-}
-
-.tool-card form {
-  display: flex;
-  gap: 8px;
-}
-
-.tool-card input {
-  min-width: 0;
-  flex: 1;
-  padding: 12px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  color: var(--text);
-}
-
-.tool-card button {
-  background: var(--accent);
-  border: 0;
-  color: #fff;
-  padding: 0 14px;
-  font-size: 11px;
-}
-
-.favourites {
-  margin-top: 25px;
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-}
-
-.favourites-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 12px;
-}
-
-.favourite-chip {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  border: 1px solid var(--line);
-  padding: 7px 10px;
-  font-size: 11px;
-}
-
-.favourite-chip button {
-  background: none;
-  border: 0;
-  color: var(--accent);
-}
-
-/* ABOUT */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 75px;
-}
-
-.about-statement {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(32px, 4vw, 48px);
-  line-height: 1.25;
-  letter-spacing: -.03em;
-}
-
-.about-copy p {
-  color: var(--muted);
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-
-.about-facts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.fact {
-  padding-top: 15px;
-  border-top: 1px solid var(--line);
-}
-
-.fact strong {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.fact span {
-  color: var(--muted);
-  font-size: 10px;
-}
-
-/* LINKS */
-
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-}
-
-.social-link {
-  min-height: 115px;
-  padding: 20px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: background .2s;
-}
-
-.social-link:hover {
-  background: var(--accent-soft);
-}
-
-.social-link strong {
-  font-size: 14px;
-}
-
-.social-link span {
-  color: var(--muted);
-  font-size: 10px;
-}
-
-/* FOOTER */
-
-footer {
-  border-top: 1px solid var(--line);
-  padding: 35px 0;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 25px;
-  align-items: center;
-}
-
-.footer-name {
-  font-family: "Playfair Display", serif;
-  font-size: 24px;
-}
-
-.footer-meta {
-  color: var(--muted);
-  font-size: 10px;
-  text-align: right;
-}
-
-#toast {
-  position: fixed;
-  bottom: 25px;
-  left: 50%;
-  transform: translate(-50%, 20px);
-  opacity: 0;
-  pointer-events: none;
-  background: var(--accent);
-  color: white;
-  padding: 13px 20px;
-  z-index: 200;
-  font-family: "DM Mono", monospace;
-  font-size: 10px;
-  letter-spacing: .1em;
-  transition: .3s;
-}
-
-#toast.show {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
-.scroll-progress {
-  position: fixed;
-  z-index: 150;
-  height: 2px;
-  width: 0;
-  top: 76px;
-  left: 0;
-  background: var(--accent);
-}
-
-/* REVEAL */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 850px) {
-  .nav-links {
-    gap: 15px;
-  }
-
-  .music-intro {
-    gap: 35px;
-  }
-
-  .artwork-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .links-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .about-grid {
-    gap: 35px;
-  }
-}
-
-@media (max-width: 650px) {
-  .container {
-    width: min(100% - 34px, 1160px);
-  }
-
-  nav {
-    height: 68px;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 68px;
-    left: 0;
-    right: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    padding: 20px;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-right {
-    gap: 15px;
-  }
-
-  .hero {
-    min-height: 690px;
-    padding-top: 145px;
-  }
-
-  .hero h1 {
-    font-size: clamp(65px, 17vw, 95px);
-  }
-
-  .hero-bottom {
-    margin-top: 65px;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .section {
-    padding: 80px 0;
-  }
-
-  .section-heading {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 35px;
-  }
-
-  .section-heading p {
-    max-width: 100%;
-  }
-
-  .music-intro {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .artwork-grid {
-    gap: 15px;
-  }
-
-  .player-section {
-    padding: 18px;
-    margin-top: 50px;
-  }
-
-  .soundcloud-wrap iframe {
-    height: 300px;
-  }
-
-  .support-strip {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 22px;
-  }
-
-  .route-form {
-    grid-template-columns: 1fr;
-  }
-
-  .route-form button {
-    min-height: 46px;
-  }
-
-  .aviation-tools {
-    grid-template-columns: 1fr;
-  }
-
-  .aviation-top {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .links-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .footer-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .footer-meta {
-    text-align: left;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11110f">
+  <meta name="description" content="Jishnu Ganguly — independent music, aviation, technology and creative projects.">
+  <title>Jishnu Ganguly — Independent Creative</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #11110f;
+      --surface: #191916;
+      --surface-2: #22221e;
+      --text: #f0ede5;
+      --muted: #969389;
+      --line: rgba(240,237,229,.14);
+      --accent: #f0784d;
+      --accent-soft: rgba(240,120,77,.12);
+      --nav-bg: rgba(17,17,15,.88);
+      --shadow: rgba(0,0,0,.25);
+      --max: 1120px;
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f2efe8;
+      --surface: #e9e5dc;
+      --surface-2: #ded9cf;
+      --text: #1b1b18;
+      --muted: #716e65;
+      --line: rgba(27,27,24,.16);
+      --accent: #cf542e;
+      --accent-soft: rgba(207,84,46,.10);
+      --nav-bg: rgba(242,239,232,.9);
+      --shadow: rgba(0,0,0,.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+      transition: background .25s, color .25s;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: white;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 10px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section {
+      padding: 105px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+
+    .section-heading > p {
+      max-width: 340px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 13px 19px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font-size: 11px;
+      letter-spacing: .07em;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .button-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      z-index: 100;
+      inset: 0 0 auto;
+      height: 74px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -.045em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      color: var(--muted);
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: none;
+      color: var(--text);
+      font-size: 23px;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      z-index: 150;
+      top: 74px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 730px;
+      padding: 175px 0 80px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -170px;
+      top: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+    .hero-location {
+      color: var(--muted);
+      margin-bottom: 34px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(76px, 11.5vw, 135px);
+      line-height: .88;
+      font-weight: 500;
+      letter-spacing: -.075em;
+      margin-bottom: 35px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .hero-description {
+      max-width: 510px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.85;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-bottom {
+      margin-top: 95px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+    }
+
+    .hero-bottom strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* MUSIC */
+
+    .music-feature {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .featured-art {
+      aspect-ratio: 1 / 1;
+      background: var(--surface);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .featured-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .65s ease;
+    }
+
+    .featured-art:hover img {
+      transform: scale(1.035);
+    }
+
+    .art-label {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 9px 12px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .feature-copy h3 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(39px, 5vw, 61px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      margin-bottom: 19px;
+    }
+
+    .feature-copy > p {
+      max-width: 430px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .release-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .release-meta span {
+      font-size: 9px;
+    }
+
+    .artwork-heading {
+      margin-top: 75px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .artwork-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .artwork-card {
+      min-width: 0;
+    }
+
+    .artwork-image {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--surface);
+      margin-bottom: 13px;
+    }
+
+    .artwork-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+
+    .artwork-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .artwork-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .artwork-card p {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: .07em;
+    }
+
+    /* PLAYER */
+
+    .player {
+      margin-top: 70px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .player-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .player-top h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      font-weight: 500;
+    }
+
+    .player-frame {
+      width: 100%;
+      overflow: hidden;
+      background: #20201c;
+    }
+
+    .player-frame iframe {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+
+    .player-note {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .download-panel {
+      margin-top: 20px;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .download-panel h4 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .download-panel p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .support-note {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* AVIATION */
+
+    .aviation-intro {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 35px;
+    }
+
+    .aviation-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .aviation-heading {
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .aviation-heading h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: 27px;
+    }
+
+    .status-label {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .status-label::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 8px;
+    }
+
+    .route-form {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 13px;
+    }
+
+    .field label {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .field select,
+    .field input {
+      width: 100%;
+      min-height: 45px;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 11px;
+      border-radius: 0;
+      outline: none;
+    }
+
+    .field select:focus,
+    .field input:focus {
+      border-color: var(--accent);
+    }
+
+    .route-submit {
+      align-self: end;
+      min-height: 45px;
+      padding: 0 20px;
+      background: var(--accent);
+      color: white;
+      border: 1px solid var(--accent);
+      font-size: 10px;
+      letter-spacing: .08em;
+    }
+
+    .route-submit:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .route-result {
+      display: none;
+      margin: 0 24px 24px;
+      padding: 24px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+
+    .route-result.visible {
+      display: block;
+    }
+
+    .route-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 27px 0 20px;
+    }
+
+    .route-dot {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .route-track {
+      flex: 1;
+      height: 1px;
+      background: var(--accent);
+      position: relative;
+    }
+
+    .route-track::after {
+      content: "✈";
+      position: absolute;
+      right: 40%;
+      top: -13px;
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .route-airports {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .route-airports strong {
+      display: block;
+      font-size: 21px;
+    }
+
+    .route-airports small {
+      color: var(--muted);
+    }
+
+    .route-distance {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      margin-top: 20px;
+    }
+
+    .route-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .small-button {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 9px 12px;
+      font-size: 10px;
+    }
+
+    .small-button:hover {
+      border-color: var(--accent);
+    }
+
+    .saved-routes {
+      padding: 0 24px 24px;
+    }
+
+    .saved-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .saved-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      font-size: 10px;
+    }
+
+    .saved-chip button {
+      border: 0;
+      background: none;
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    .aviation-tools {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 24px;
+    }
+
+    .tool-card h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .tool-card > p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 17px;
+    }
+
+    .tool-card form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tool-card input {
+      flex: 1;
+      min-width: 0;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 11px;
+      outline: none;
+    }
+
+    .tool-card input:focus {
+      border-color: var(--accent);
+    }
+
+    .tool-card button {
+      background: var(--accent);
+      color: white;
+      border: 1px solid var(--accent);
+      padding: 0 13px;
+      font-size: 10px;
+    }
+
+    .tool-card button:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 75px;
+    }
+
+    .about-statement {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 47px);
+      line-height: 1.25;
+      letter-spacing: -.035em;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .about-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 28px;
+    }
+
+    .fact {
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    /* LINKS */
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .social-link {
+      min-height: 110px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background .2s;
+    }
+
+    .social-link:hover {
+      background: var(--accent-soft);
+    }
+
+    .social-link strong {
+      font-size: 13px;
+    }
+
+    .social-link span {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .footer-name {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+    }
+
+    .footer-meta {
+      text-align: right;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    #toast {
+      position: fixed;
+      z-index: 200;
+      bottom: 24px;
+      left: 50%;
+      transform: translate(-50%, 15px);
+      opacity: 0;
+      pointer-events: none;
+      background: var(--accent);
+      color: white;
+      padding: 12px 18px;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      transition: .25s;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .music-feature {
+        gap: 35px;
+      }
+
+      .artwork-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        gap: 35px;
+      }
+
+      .links-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: calc(100% - 34px);
+      }
+
+      nav {
+        height: 66px;
+      }
+
+      .scroll-progress {
+        top: 66px;
+      }
+
+      .nav-right {
+        gap: 13px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: 680px;
+        padding: 145px 0 65px;
+      }
+
+      .hero h1 {
+        font-size: clamp(67px, 17vw, 95px);
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-bottom {
+        margin-top: 65px;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 35px;
+      }
+
+      .section-heading > p {
+        max-width: 100%;
+      }
+
+      .music-feature {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .artwork-heading {
+        flex-direction: column;
+      }
+
+      .player {
+        padding: 17px;
+        margin-top: 50px;
+      }
+
+      .player-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .player-frame iframe {
+        height: 300px;
+      }
+
+      .download-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .aviation-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .route-form {
+        grid-template-columns: 1fr;
+      }
+
+      .route-submit {
+        min-height: 45px;
+      }
+
+      .aviation-tools {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-meta {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-<nav>
-  <div class="container nav-inner">
-    <a class="brand" href="#home">JISHNU<span>.</span></a>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="brand">JISHNU<span>.</span></a>
 
-    <div class="nav-right">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#music">Music</a></li>
-        <li><a href="#aviation">Aviation</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#links">Elsewhere</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#music">Music</a></li>
+          <li><a href="#aviation">Aviation</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#links">Elsewhere</a></li>
+        </ul>
 
-      <button class="theme-toggle" id="themeToggle" type="button">LIGHT MODE</button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" type="button">☰</button>
-    </div>
-  </div>
-</nav>
-
-<main>
-
-<!-- HERO -->
-
-<header class="hero" id="home">
-  <div class="container">
-    <div class="hero-content">
-      <div class="eyebrow mono">INDEPENDENT CREATIVE / NEW DELHI, INDIA</div>
-
-      <div class="hero-location mono">EST. 2011 &nbsp; · &nbsp; PERSONAL SPACE ON THE INTERNET</div>
-
-      <h1>JISHNU <span>Ganguly.</span></h1>
-
-      <p class="hero-description">
-        Making music, exploring aviation, building things, and following
-        whatever happens to be interesting. A little bit of everything,
-        entirely my own.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#music" class="button button-primary">EXPLORE THE MUSIC <span>↗</span></a>
-        <a href="#aviation" class="button">ENTER THE AVIATION DESK <span>↗</span></a>
+        <button class="theme-toggle" id="themeToggle" type="button">LIGHT MODE</button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">☰</button>
       </div>
     </div>
+  </nav>
 
-    <div class="hero-bottom">
-      <div class="mono">CURRENTLY EXPLORING <strong>Sound · Flight · Technology</strong></div>
-      <div class="scroll-indicator mono">SCROLL TO EXPLORE ↓</div>
-    </div>
-  </div>
-</header>
+  <main>
 
-<!-- MUSIC -->
+    <!-- INTRODUCTION -->
 
-<section class="section" id="music">
-  <div class="container">
+    <header class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow mono">INDEPENDENT CREATIVE / NEW DELHI, INDIA</div>
 
-    <div class="section-heading reveal">
-      <div>
-        <div class="eyebrow mono">01 / THE CREATIVE SIDE</div>
-        <h2>Made of sound.</h2>
-      </div>
-      <p>
-        Music is a place to experiment. Different sounds, different
-        interpretations, and the occasional idea that refuses to stay quiet.
-      </p>
-    </div>
+          <div class="hero-location mono">
+            EST. 2011 &nbsp; · &nbsp; A PERSONAL SPACE ON THE INTERNET
+          </div>
 
-    <div class="music-intro reveal">
+          <h1>JISHNU <span>Ganguly.</span></h1>
 
-      <div class="featured-art">
-        <img
-          src="bella ciao cover art (1).png"
-          alt="Bella Ciao: The Interpretations cover artwork">
-        <div class="featured-label mono">FEATURED RELEASE / BELLA CIAO</div>
-      </div>
+          <p class="hero-description">
+            Making music, exploring aviation, building things, and following
+            whatever happens to be interesting. A little bit of everything,
+            entirely my own.
+          </p>
 
-      <div class="featured-copy">
-        <div class="eyebrow mono">LATEST RELEASE / EP</div>
-        <h3>Bella Ciao:<br><em>The Interpretations.</em></h3>
-
-        <p>
-          One song, approached from different musical directions.
-          A collection of interpretations that moves between textures,
-          moods and arrangements.
-        </p>
-
-        <div class="release-meta mono">
-          <span>INDEPENDENT RELEASE</span>
-          <span>FOUR ARTWORKS</span>
-          <span>PAY WHAT YOU WANT</span>
+          <div class="hero-actions">
+            <a href="#music" class="button button-primary">EXPLORE THE MUSIC ↗</a>
+            <a href="#aviation" class="button">THE AVIATION DESK ↗</a>
+          </div>
         </div>
 
-        <a
-          class="button button-primary"
-          href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations"
-          target="_blank"
-          rel="noopener noreferrer">
-          LISTEN / GET THE EP ↗
-        </a>
+        <div class="hero-bottom mono">
+          <div>BASED IN <strong>NEW DELHI, INDIA</strong></div>
+          <div>SCROLL TO EXPLORE ↓</div>
+        </div>
       </div>
-    </div>
+    </header>
 
-    <div class="artwork-heading reveal">
-      <div class="mono accent">THE ARTWORK COLLECTION</div>
-      <div class="mono muted">FOUR VISUAL INTERPRETATIONS</div>
-    </div>
+    <!-- MUSIC -->
 
-    <div class="artwork-grid reveal">
+    <section class="section" id="music">
+      <div class="container">
 
-      <article class="artwork-card">
-        <div class="artwork-image">
-          <img src="Bella Ciao rock.png" alt="Bella Ciao rock artwork">
-        </div>
-        <h4>Rock Interpretation</h4>
-        <p>LOUDER. RAWER. MORE ENERGY.</p>
-      </article>
-
-      <article class="artwork-card">
-        <div class="artwork-image">
-          <img src="bella ciao lofi (2).png" alt="Bella Ciao lo-fi artwork">
-        </div>
-        <h4>Lo-fi Interpretation</h4>
-        <p>SOFTER EDGES. SLOWER MOMENTS.</p>
-      </article>
-
-      <article class="artwork-card">
-        <div class="artwork-image">
-          <img src="Bella Ciao_ Lush Acoustic Shadows.png" alt="Bella Ciao Lush Acoustic Shadows artwork">
-        </div>
-        <h4>Lush Acoustic Shadows</h4>
-        <p>STRIPPED BACK. TEXTURAL. INTIMATE.</p>
-      </article>
-
-      <article class="artwork-card">
-        <div class="artwork-image">
-          <img src="bella ciao cover art (1).png" alt="Bella Ciao main cover artwork">
-        </div>
-        <h4>The Main Artwork</h4>
-        <p>THE ORIGINAL RELEASE COVER.</p>
-      </article>
-
-    </div>
-
-    <!-- BUILT-IN SOUNDCLOUD PLAYER -->
-
-    <div class="player-section reveal">
-      <div class="player-header">
-        <div>
-          <div class="eyebrow mono">LISTEN HERE</div>
-          <h3>The listening room.</h3>
-        </div>
-        <span class="mono">SOUNDCLOUD PLAYER</span>
-      </div>
-
-      <div class="soundcloud-wrap">
-        <iframe
-          title="Jishnu Ganguly SoundCloud player"
-          allow="autoplay"
-          loading="lazy"
-          scrolling="no"
-          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/jishnu-ganguly-661670492&color=%23ff693b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-        </iframe>
-      </div>
-
-      <p class="player-note">
-        Embedded SoundCloud player. Select a track and listen without leaving this website.
-      </p>
-    </div>
-
-    <!-- GENERAL MUSIC SUPPORT -->
-
-    <div class="support-strip reveal">
-      <div>
-        <h3>Keep the music moving.</h3>
-        <p>
-          Enjoy what I make? You can support my music in general, not just
-          one particular release. Every bit helps make future recordings,
-          experiments and projects possible.
-        </p>
-      </div>
-
-      <a class="button" href="#support">BACK THE MUSIC ↗</a>
-    </div>
-
-    <div id="support" class="reveal" style="padding-top:22px;">
-      <p class="mono muted">
-        SUPPORT THE MUSIC — A SUPPORT LINK CAN BE ADDED HERE WHEN READY.
-      </p>
-      <p class="muted" style="font-size:12px;margin-top:7px;">
-        The EP is available on Bandcamp with a pay-what-you-want approach,
-        including zero. General music support is a separate option.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- AVIATION -->
-
-<section class="section" id="aviation">
-  <div class="container">
-
-    <div class="section-heading reveal">
-      <div>
-        <div class="eyebrow mono">02 / THE AVIATION DESK</div>
-        <h2>Somewhere<br>above the clouds.</h2>
-      </div>
-      <p>
-        Airports, aircraft, routes and the fascinating systems that make
-        commercial aviation work. This is the aviation corner of the site.
-      </p>
-    </div>
-
-    <p class="aviation-intro reveal">
-      Explore a selection of airports, calculate approximate great-circle
-      distances, save routes and look up flight numbers. The route explorer
-      is an educational tool, not a live flight tracker.
-    </p>
-
-    <div class="aviation-panel reveal">
-
-      <div class="aviation-top">
-        <h3>Route explorer.</h3>
-        <span class="live-indicator mono">ROUTE CALCULATOR / NOT LIVE FLIGHT DATA</span>
-      </div>
-
-      <div class="route-form">
-        <div class="field">
-          <label class="mono" for="origin">ORIGIN AIRPORT</label>
-          <select id="origin">
-            <option value="DEL">DEL — Delhi</option>
-            <option value="BOM">BOM — Mumbai</option>
-            <option value="BLR">BLR — Bengaluru</option>
-            <option value="MAA">MAA — Chennai</option>
-            <option value="CCU">CCU — Kolkata</option>
-            <option value="HYD">HYD — Hyderabad</option>
-            <option value="GOI">GOI — Goa</option>
-            <option value="DXB">DXB — Dubai</option>
-            <option value="SIN">SIN — Singapore</option>
-            <option value="LHR">LHR — London Heathrow</option>
-            <option value="JFK">JFK — New York JFK</option>
-            <option value="DOH">DOH — Doha</option>
-            <option value="HND">HND — Tokyo Haneda</option>
-            <option value="CDG">CDG — Paris Charles de Gaulle</option>
-            <option value="FRA">FRA — Frankfurt</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label class="mono" for="destination">DESTINATION AIRPORT</label>
-          <select id="destination">
-            <option value="BOM">BOM — Mumbai</option>
-            <option value="DEL">DEL — Delhi</option>
-            <option value="BLR">BLR — Bengaluru</option>
-            <option value="MAA">MAA — Chennai</option>
-            <option value="CCU">CCU — Kolkata</option>
-            <option value="HYD">HYD — Hyderabad</option>
-            <option value="GOI">GOI — Goa</option>
-            <option value="DXB">DXB — Dubai</option>
-            <option value="SIN">SIN — Singapore</option>
-            <option value="LHR">LHR — London Heathrow</option>
-            <option value="JFK">JFK — New York JFK</option>
-            <option value="DOH">DOH — Doha</option>
-            <option value="HND">HND — Tokyo Haneda</option>
-            <option value="CDG">CDG — Paris Charles de Gaulle</option>
-            <option value="FRA">FRA — Frankfurt</option>
-          </select>
-        </div>
-
-        <button type="button" id="calculateRoute">CALCULATE ↗</button>
-      </div>
-
-      <div class="route-result" id="routeResult" aria-live="polite">
-        <div class="mono accent">YOUR SELECTED ROUTE</div>
-
-        <div class="route-line">
-          <div class="route-dot"></div>
-          <div class="route-track"></div>
-          <div class="route-dot"></div>
-        </div>
-
-        <div class="route-airports">
+        <div class="section-heading reveal">
           <div>
-            <strong id="originCode">DEL</strong>
-            <small id="originName">Delhi</small>
+            <div class="eyebrow mono">01 / THE CREATIVE SIDE</div>
+            <h2>Made of sound.</h2>
           </div>
-          <div style="text-align:right;">
-            <strong id="destinationCode">BOM</strong>
-            <small id="destinationName">Mumbai</small>
+
+          <p>
+            Different sounds, different interpretations, and the occasional
+            idea that refuses to stay quiet.
+          </p>
+        </div>
+
+        <div class="music-feature reveal">
+
+          <div class="featured-art">
+            <img
+              src="bella%20ciao%20cover%20art%20(1).png"
+              alt="Bella Ciao: The Interpretations cover artwork">
+            <div class="art-label mono">FEATURED RELEASE / EP</div>
+          </div>
+
+          <div class="feature-copy">
+            <div class="eyebrow mono">INDEPENDENT RELEASE</div>
+
+            <h3>Bella Ciao:<br><em>The Interpretations.</em></h3>
+
+            <p>
+              One song, approached from different musical directions.
+              A collection of interpretations that moves between textures,
+              moods and arrangements.
+            </p>
+
+            <div class="release-meta mono">
+              <span>INDEPENDENT</span>
+              <span>FOUR ARTWORKS</span>
+              <span>PAY WHAT YOU WANT</span>
+            </div>
+
+            <a
+              class="button button-primary"
+              href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations"
+              target="_blank"
+              rel="noopener noreferrer">
+              EXPLORE THE RELEASE ↗
+            </a>
           </div>
         </div>
 
-        <div class="route-distance" id="distance">— km</div>
-        <div class="mono muted">APPROXIMATE GREAT-CIRCLE DISTANCE</div>
-
-        <div class="route-actions">
-          <button class="small-button" id="saveRoute" type="button">☆ SAVE ROUTE</button>
-          <button class="small-button" id="swapRoute" type="button">↔ SWAP AIRPORTS</button>
+        <div class="artwork-heading reveal">
+          <span class="mono accent">THE ARTWORK COLLECTION</span>
+          <span class="mono muted">FOUR VISUAL INTERPRETATIONS</span>
         </div>
-      </div>
 
-      <div class="favourites" style="padding:0 25px 25px;">
-        <div class="mono muted">SAVED ROUTES</div>
-        <div class="favourites-list" id="favouritesList">
-          <span class="muted" style="font-size:11px;">No saved routes yet.</span>
+        <div class="artwork-grid reveal">
+
+          <article class="artwork-card">
+            <div class="artwork-image">
+              <img
+                src="Bella%20Ciao%20rock.png"
+                alt="Bella Ciao rock artwork"
+                loading="lazy">
+            </div>
+            <h4>Rock Interpretation</h4>
+            <p>LOUDER / RAWER / MORE ENERGY</p>
+          </article>
+
+          <article class="artwork-card">
+            <div class="artwork-image">
+              <img
+                src="bella%20ciao%20lofi%20(2).png"
+                alt="Bella Ciao lo-fi artwork"
+                loading="lazy">
+            </div>
+            <h4>Lo-fi Interpretation</h4>
+            <p>SOFTER EDGES / SLOWER MOMENTS</p>
+          </article>
+
+          <article class="artwork-card">
+            <div class="artwork-image">
+              <img
+                src="Bella%20Ciao_%20Lush%20Acoustic%20Shadows.png"
+                alt="Bella Ciao Lush Acoustic Shadows artwork"
+                loading="lazy">
+            </div>
+            <h4>Lush Acoustic Shadows</h4>
+            <p>TEXTURAL / ACOUSTIC / INTIMATE</p>
+          </article>
+
+          <article class="artwork-card">
+            <div class="artwork-image">
+              <img
+                src="bella%20ciao%20cover%20art%20(1).png"
+                alt="Bella Ciao main cover artwork"
+                loading="lazy">
+            </div>
+            <h4>Main Artwork</h4>
+            <p>THE ORIGINAL RELEASE COVER</p>
+          </article>
+
         </div>
+
+        <!-- EMBEDDED PLAYER -->
+
+        <div class="player reveal">
+          <div class="player-top">
+            <div>
+              <div class="eyebrow mono">LISTEN HERE</div>
+              <h3>The listening room.</h3>
+            </div>
+            <span class="mono muted">SOUNDCLOUD PLAYER</span>
+          </div>
+
+          <div class="player-frame">
+            <iframe
+              title="Jishnu Ganguly SoundCloud music player"
+              allow="autoplay"
+              loading="lazy"
+              scrolling="no"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/jishnu-ganguly-661670492&color=%23f0784d&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+            </iframe>
+          </div>
+
+          <p class="player-note">
+            Listen to the music through the embedded SoundCloud player.
+            Playback and track availability are provided by SoundCloud.
+          </p>
+
+          <div class="download-panel">
+            <div>
+              <h4>Want the complete release?</h4>
+              <p>
+                Explore the full EP on Bandcamp. Pay what you want,
+                including zero, if that pricing option is enabled for the release.
+              </p>
+            </div>
+
+            <a
+              class="button button-primary"
+              href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations"
+              target="_blank"
+              rel="noopener noreferrer">
+              GET THE FULL EP ↗
+            </a>
+          </div>
+
+          <div class="support-note">
+            General music support will have its own dedicated space here in
+            the future. For now, the focus is on listening and discovering
+            the releases.
+          </div>
+        </div>
+
       </div>
+    </section>
 
-    </div>
+    <!-- AVIATION -->
 
-    <div class="aviation-tools">
+    <section class="section" id="aviation">
+      <div class="container">
 
-      <div class="tool-card reveal">
-        <div class="eyebrow mono">FLIGHT LOOKUP</div>
-        <h3>Find a flight.</h3>
-        <p>
-          Search a flight number through an external flight-information
-          service. Results and live tracking are provided by that service.
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow mono">02 / THE AVIATION DESK</div>
+            <h2>Somewhere<br>above the clouds.</h2>
+          </div>
+
+          <p>
+            Airports, aircraft, routes and the systems that make commercial
+            aviation work.
+          </p>
+        </div>
+
+        <p class="aviation-intro reveal">
+          Explore airport pairs, calculate approximate great-circle distances,
+          save favourite routes and search for flight information.
         </p>
 
-        <form id="flightForm">
-          <input id="flightNumber" type="text" placeholder="e.g. AI 101" aria-label="Flight number">
-          <button type="submit">SEARCH ↗</button>
-        </form>
+        <div class="aviation-panel reveal">
+
+          <div class="aviation-heading">
+            <h3>Route explorer.</h3>
+            <span class="status-label mono">ROUTE CALCULATOR / NOT LIVE FLIGHT DATA</span>
+          </div>
+
+          <div class="route-form">
+
+            <div class="field">
+              <label class="mono" for="origin">ORIGIN AIRPORT</label>
+              <select id="origin">
+                <option value="DEL">DEL — Delhi</option>
+                <option value="BOM">BOM — Mumbai</option>
+                <option value="BLR">BLR — Bengaluru</option>
+                <option value="MAA">MAA — Chennai</option>
+                <option value="CCU">CCU — Kolkata</option>
+                <option value="HYD">HYD — Hyderabad</option>
+                <option value="GOI">GOI — Goa</option>
+                <option value="DXB">DXB — Dubai</option>
+                <option value="SIN">SIN — Singapore</option>
+                <option value="LHR">LHR — London Heathrow</option>
+                <option value="JFK">JFK — New York JFK</option>
+                <option value="DOH">DOH — Doha</option>
+                <option value="HND">HND — Tokyo Haneda</option>
+                <option value="CDG">CDG — Paris Charles de Gaulle</option>
+                <option value="FRA">FRA — Frankfurt</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="mono" for="destination">DESTINATION AIRPORT</label>
+              <select id="destination">
+                <option value="BOM">BOM — Mumbai</option>
+                <option value="DEL">DEL — Delhi</option>
+                <option value="BLR">BLR — Bengaluru</option>
+                <option value="MAA">MAA — Chennai</option>
+                <option value="CCU">CCU — Kolkata</option>
+                <option value="HYD">HYD — Hyderabad</option>
+                <option value="GOI">GOI — Goa</option>
+                <option value="DXB">DXB — Dubai</option>
+                <option value="SIN">SIN — Singapore</option>
+                <option value="LHR">LHR — London Heathrow</option>
+                <option value="JFK">JFK — New York JFK</option>
+                <option value="DOH">DOH — Doha</option>
+                <option value="HND">HND — Tokyo Haneda</option>
+                <option value="CDG">CDG — Paris Charles de Gaulle</option>
+                <option value="FRA">FRA — Frankfurt</option>
+              </select>
+            </div>
+
+            <button class="route-submit" id="calculateRoute" type="button">
+              CALCULATE ↗
+            </button>
+
+          </div>
+
+          <div class="route-result" id="routeResult" aria-live="polite">
+            <div class="mono accent">SELECTED ROUTE</div>
+
+            <div class="route-line">
+              <div class="route-dot"></div>
+              <div class="route-track"></div>
+              <div class="route-dot"></div>
+            </div>
+
+            <div class="route-airports">
+              <div>
+                <strong id="originCode">DEL</strong>
+                <small id="originName">Delhi</small>
+              </div>
+
+              <div style="text-align:right">
+                <strong id="destinationCode">BOM</strong>
+                <small id="destinationName">Mumbai</small>
+              </div>
+            </div>
+
+            <div class="route-distance" id="distance">— km</div>
+            <div class="mono muted">APPROXIMATE GREAT-CIRCLE DISTANCE</div>
+
+            <div class="route-actions">
+              <button class="small-button" id="saveRoute" type="button">☆ SAVE ROUTE</button>
+              <button class="small-button" id="swapRoute" type="button">↔ SWAP AIRPORTS</button>
+              <a
+                class="small-button"
+                id="mapRoute"
+                href="https://www.google.com/maps"
+                target="_blank"
+                rel="noopener noreferrer">
+                VIEW MAP ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="saved-routes">
+            <div class="mono muted">SAVED ROUTES</div>
+            <div class="saved-list" id="savedRoutes">
+              <span class="muted" style="font-size:11px">No saved routes yet.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="aviation-tools">
+
+          <div class="tool-card reveal">
+            <div class="eyebrow mono">FLIGHT LOOKUP</div>
+            <h3>Find a flight.</h3>
+            <p>
+              Search a flight number through an external flight-information
+              search. Results are provided by the external service.
+            </p>
+
+            <form id="flightForm">
+              <input
+                id="flightNumber"
+                type="text"
+                placeholder="e.g. AI 101"
+                aria-label="Flight number">
+              <button type="submit">SEARCH ↗</button>
+            </form>
+          </div>
+
+          <div class="tool-card reveal">
+            <div class="eyebrow mono">AIRPORT DIRECTORY</div>
+            <h3>Look around.</h3>
+            <p>
+              Search for airport information, terminals, airlines and facilities.
+            </p>
+
+            <form id="airportForm">
+              <input
+                id="airportSearch"
+                type="text"
+                placeholder="e.g. Delhi airport"
+                aria-label="Airport name">
+              <button type="submit">EXPLORE ↗</button>
+            </form>
+          </div>
+
+        </div>
+
       </div>
+    </section>
 
-      <div class="tool-card reveal">
-        <div class="eyebrow mono">AIRPORT EXPLORER</div>
-        <h3>Look around.</h3>
-        <p>
-          Search airport information, terminals, airlines and facilities.
-        </p>
+    <!-- ABOUT -->
 
-        <form id="airportForm">
-          <input id="airportSearch" type="text" placeholder="e.g. Indira Gandhi International" aria-label="Airport name">
-          <button type="submit">EXPLORE ↗</button>
-        </form>
+    <section class="section" id="about">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow mono">03 / A LITTLE ABOUT ME</div>
+            <h2>Not just one thing.</h2>
+          </div>
+        </div>
+
+        <div class="about-grid reveal">
+
+          <div class="about-statement">
+            I like making things, understanding how things work, and finding
+            interesting connections between seemingly unrelated worlds.
+          </div>
+
+          <div class="about-copy">
+            <p>
+              I'm Jishnu Ganguly, an independent creator based in New Delhi,
+              India. This website is my own little corner of the internet —
+              a place for the things I make, the things I follow, and the
+              projects I want to put into the world.
+            </p>
+
+            <p>
+              Music is one part of it. Aviation is another. Technology,
+              experimentation and creative projects find their way in too.
+            </p>
+
+            <p>
+              There's no single category that quite fits everything here.
+              That's probably the point.
+            </p>
+
+            <div class="about-facts">
+              <div class="fact">
+                <strong>New Delhi</strong>
+                <span>BASED IN INDIA</span>
+              </div>
+              <div class="fact">
+                <strong>2011</strong>
+                <span>ESTABLISHED</span>
+              </div>
+              <div class="fact">
+                <strong>Independent</strong>
+                <span>CREATIVE WORK</span>
+              </div>
+              <div class="fact">
+                <strong>Always exploring</strong>
+                <span>CURRENT APPROACH</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-    </div>
+    <!-- ELSEWHERE -->
 
-  </div>
-</section>
+    <section class="section" id="links">
+      <div class="container">
 
-<!-- ABOUT -->
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow mono">04 / FIND ME ELSEWHERE</div>
+            <h2>Out in the world.</h2>
+          </div>
 
-<section class="section" id="about">
-  <div class="container">
+          <p>
+            Other places where the music, projects and occasional updates live.
+          </p>
+        </div>
 
-    <div class="section-heading reveal">
+        <div class="links-grid reveal">
+
+          <a
+            class="social-link"
+            href="https://soundcloud.com/jishnu-ganguly-661670492"
+            target="_blank"
+            rel="noopener noreferrer">
+            <strong>SoundCloud ↗</strong>
+            <span>MUSIC & LISTENING</span>
+          </a>
+
+          <a
+            class="social-link"
+            href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations"
+            target="_blank"
+            rel="noopener noreferrer">
+            <strong>Bandcamp ↗</strong>
+            <span>RELEASES</span>
+          </a>
+
+          <a
+            class="social-link"
+            href="https://www.instagram.com/j1shnuke.wav"
+            target="_blank"
+            rel="noopener noreferrer">
+            <strong>Instagram ↗</strong>
+            <span>UPDATES & VISUALS</span>
+          </a>
+
+          <a
+            class="social-link"
+            href="https://github.com/jishnu-ganguly"
+            target="_blank"
+            rel="noopener noreferrer">
+            <strong>GitHub ↗</strong>
+            <span>CODE & PROJECTS</span>
+          </a>
+
+          <a
+            class="social-link"
+            href="https://www.youtube.com/@JishNuKe_"
+            target="_blank"
+            rel="noopener noreferrer">
+            <strong>YouTube ↗</strong>
+            <span>VIDEO & MORE</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container footer-inner">
+
       <div>
-        <div class="eyebrow mono">03 / A LITTLE ABOUT ME</div>
-        <h2>Not just one thing.</h2>
-      </div>
-    </div>
-
-    <div class="about-grid reveal">
-
-      <div class="about-statement">
-        I like making things, understanding how things work, and finding
-        interesting connections between seemingly unrelated worlds.
+        <div class="footer-name">
+          Jishnu Ganguly<span class="accent">.</span>
+        </div>
+        <div class="mono muted" style="margin-top:5px">
+          INDEPENDENTLY MADE / NEW DELHI, INDIA
+        </div>
       </div>
 
-      <div class="about-copy">
-        <p>
-          I'm Jishnu Ganguly, an independent creator based in New Delhi, India.
-          This website is my own little corner of the internet — a place for
-          the things I make, the things I follow, and the projects I want to
-          put into the world.
-        </p>
-
-        <p>
-          Music is one part of it. Aviation is another. Technology,
-          experimentation and creative projects find their way in too.
-        </p>
-
-        <p>
-          There's no single category that quite fits everything here.
-          That's probably the point.
-        </p>
-
-        <div class="about-facts">
-          <div class="fact">
-            <strong>New Delhi</strong>
-            <span>BASED IN INDIA</span>
-          </div>
-          <div class="fact">
-            <strong>2011</strong>
-            <span>ESTABLISHED</span>
-          </div>
-          <div class="fact">
-            <strong>Independent</strong>
-            <span>CREATIVE WORK</span>
-          </div>
-          <div class="fact">
-            <strong>Always exploring</strong>
-            <span>CURRENT APPROACH</span>
-          </div>
+      <div class="footer-meta">
+        <div>© <span id="year"></span> JISHNU GANGULY</div>
+        <div style="margin-top:5px">
+          EST. <span id="easterEgg" title="A little secret">2011</span>
+          · ALL THINGS CONSIDERED.
         </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- ELSEWHERE -->
+  <div id="toast" role="status">YOU FOUND THE FREQUENCY.</div>
 
-<section class="section" id="links">
-  <div class="container">
+  <script>
+    "use strict";
 
-    <div class="section-heading reveal">
-      <div>
-        <div class="eyebrow mono">04 / FIND ME ELSEWHERE</div>
-        <h2>Out in the world.</h2>
-      </div>
-      <p>
-        Other places where the music, projects and occasional updates live.
-      </p>
-    </div>
+    /* THEME */
 
-    <div class="links-grid reveal">
+    const themeToggle = document.getElementById("themeToggle");
 
-      <a class="social-link" href="https://soundcloud.com/jishnu-ganguly-661670492" target="_blank" rel="noopener noreferrer">
-        <strong>SoundCloud ↗</strong>
-        <span>MUSIC & LISTENING</span>
-      </a>
-
-      <a class="social-link" href="https://jishnuganguly.bandcamp.com/album/bella-ciao-the-interpretations" target="_blank" rel="noopener noreferrer">
-        <strong>Bandcamp ↗</strong>
-        <span>RELEASES</span>
-      </a>
-
-      <a class="social-link" href="https://www.instagram.com/j1shnuke.wav" target="_blank" rel="noopener noreferrer">
-        <strong>Instagram ↗</strong>
-        <span>UPDATES & VISUALS</span>
-      </a>
-
-      <a class="social-link" href="https://github.com/jishnu-ganguly" target="_blank" rel="noopener noreferrer">
-        <strong>GitHub ↗</strong>
-        <span>CODE & PROJECTS</span>
-      </a>
-
-      <a class="social-link" href="https://www.youtube.com/@JishNuKe_" target="_blank" rel="noopener noreferrer">
-        <strong>YouTube ↗</strong>
-        <span>VIDEO & MORE</span>
-      </a>
-
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <div>
-      <div class="footer-name">Jishnu Ganguly<span class="accent">.</span></div>
-      <div class="mono muted" style="margin-top:5px;">INDEPENDENTLY MADE / NEW DELHI, INDIA</div>
-    </div>
-
-    <div class="footer-meta">
-      <div>© <span id="year"></span> JISHNU GANGULY</div>
-      <div style="margin-top:5px;">EST. <span id="easterEgg">2011</span> · ALL THINGS CONSIDERED.</div>
-    </div>
-  </div>
-</footer>
-
-<div id="toast" role="status">YOU FOUND THE FREQUENCY.</div>
-
-<script>
-/* THEME SWITCH */
-
-const themeToggle = document.getElementById("themeToggle");
-const savedTheme = localStorage.getItem("jishnu-theme");
-
-if (savedTheme === "light") {
-  document.documentElement.setAttribute("data-theme", "light");
-}
-
-function updateThemeButton() {
-  const isLight = document.documentElement.getAttribute("data-theme") === "light";
-  themeToggle.textContent = isLight ? "DARK MODE" : "LIGHT MODE";
-}
-
-updateThemeButton();
-
-themeToggle.addEventListener("click", () => {
-  const isLight = document.documentElement.getAttribute("data-theme") === "light";
-
-  if (isLight) {
-    document.documentElement.removeAttribute("data-theme");
-    localStorage.setItem("jishnu-theme", "dark");
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("jishnu-theme", "light");
-  }
-
-  updateThemeButton();
-});
-
-
-/* MOBILE NAVIGATION */
-
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-  menuToggle.textContent = navLinks.classList.contains("open") ? "×" : "☰";
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuToggle.textContent = "☰";
-  });
-});
-
-
-/* SCROLL PROGRESS */
-
-window.addEventListener("scroll", () => {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-  document.getElementById("scrollProgress").style.width = progress + "%";
-});
-
-
-/* SCROLL REVEAL */
-
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
+    function getStoredTheme() {
+      try {
+        return localStorage.getItem("jishnu-theme");
+      } catch {
+        return null;
+      }
     }
-  });
-}, { threshold: 0.12 });
 
-document.querySelectorAll(".reveal").forEach(element => {
-  revealObserver.observe(element);
-});
+    function saveTheme(theme) {
+      try {
+        localStorage.setItem("jishnu-theme", theme);
+      } catch {
+        // Theme still works for this page even if storage is unavailable.
+      }
+    }
 
+    if (getStoredTheme() === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
 
-/* AIRPORT DATA */
+    function updateThemeButton() {
+      const light =
+        document.documentElement.getAttribute("data-theme") === "light";
 
-const airports = {
-  DEL: { name: "Delhi", lat: 28.5562, lon: 77.1000 },
-  BOM: { name: "Mumbai", lat: 19.0896, lon: 72.8656 },
-  BLR: { name: "Bengaluru", lat: 13.1986, lon: 77.7066 },
-  MAA: { name: "Chennai", lat: 12.9941, lon: 80.1709 },
-  CCU: { name: "Kolkata", lat: 22.6547, lon: 88.4467 },
-  HYD: { name: "Hyderabad", lat: 17.2403, lon: 78.4294 },
-  GOI: { name: "Goa (Manohar International)", lat: 15.7443, lon: 73.8606 },
-  DXB: { name: "Dubai", lat: 25.2532, lon: 55.3657 },
-  SIN: { name: "Singapore Changi", lat: 1.3644, lon: 103.9915 },
-  LHR: { name: "London Heathrow", lat: 51.4700, lon: -0.4543 },
-  JFK: { name: "New York JFK", lat: 40.6413, lon: -73.7781 },
-  DOH: { name: "Doha Hamad", lat: 25.2731, lon: 51.6081 },
-  HND: { name: "Tokyo Haneda", lat: 35.5494, lon: 139.7798 },
-  CDG: { name: "Paris Charles de Gaulle", lat: 49.0097, lon: 2.5479 },
-  FRA: { name: "Frankfurt", lat: 50.0379, lon: 8.5622 }
-};
+      themeToggle.textContent = light ? "DARK MODE" : "LIGHT MODE";
+    }
 
+    updateThemeButton();
 
-/* GREAT-CIRCLE DISTANCE */
+    themeToggle.addEventListener("click", () => {
+      const light =
+        document.documentElement.getAttribute("data-theme") === "light";
 
-function calculateDistance(a, b) {
-  const toRadians = degrees => degrees * Math.PI / 180;
-  const earthRadius = 6371;
+      if (light) {
+        document.documentElement.removeAttribute("data-theme");
+        saveTheme("dark");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        saveTheme("light");
+      }
 
-  const lat1 = toRadians(a.lat);
-  const lat2 = toRadians(b.lat);
-  const deltaLat = toRadians(b.lat - a.lat);
-  const deltaLon = toRadians(b.lon - a.lon);
-
-  const value =
-    Math.sin(deltaLat / 2) ** 2 +
-    Math.cos(lat1) * Math.cos(lat2) *
-    Math.sin(deltaLon / 2) ** 2;
-
-  return earthRadius * 2 * Math.atan2(
-    Math.sqrt(value),
-    Math.sqrt(1 - value)
-  );
-}
-
-
-/* ROUTE EXPLORER */
-
-let currentRoute = null;
-
-const originSelect = document.getElementById("origin");
-const destinationSelect = document.getElementById("destination");
-const routeResult = document.getElementById("routeResult");
-
-function showRoute() {
-  const fromCode = originSelect.value;
-  const toCode = destinationSelect.value;
-
-  if (fromCode === toCode) {
-    alert("Choose two different airports to calculate a route.");
-    return;
-  }
-
-  const from = airports[fromCode];
-  const to = airports[toCode];
-
-  const distance = calculateDistance(from, to);
-
-  currentRoute = { fromCode, toCode, distance };
-
-  document.getElementById("originCode").textContent = fromCode;
-  document.getElementById("destinationCode").textContent = toCode;
-  document.getElementById("originName").textContent = from.name;
-  document.getElementById("destinationName").textContent = to.name;
-  document.getElementById("distance").textContent =
-    Math.round(distance).toLocaleString("en-IN") + " km";
-
-  routeResult.classList.add("visible");
-}
-
-document.getElementById("calculateRoute").addEventListener("click", showRoute);
-
-document.getElementById("swapRoute").addEventListener("click", () => {
-  const oldOrigin = originSelect.value;
-  originSelect.value = destinationSelect.value;
-  destinationSelect.value = oldOrigin;
-  showRoute();
-});
-
-
-/* SAVED ROUTES */
-
-function getSavedRoutes() {
-  try {
-    return JSON.parse(localStorage.getItem("jishnu-routes")) || [];
-  } catch {
-    return [];
-  }
-}
-
-function renderFavourites() {
-  const list = document.getElementById("favouritesList");
-  const routes = getSavedRoutes();
-
-  list.innerHTML = "";
-
-  if (routes.length === 0) {
-    list.innerHTML = '<span class="muted" style="font-size:11px;">No saved routes yet.</span>';
-    return;
-  }
-
-  routes.forEach((route, index) => {
-    const chip = document.createElement("div");
-    chip.className = "favourite-chip";
-
-    const label = document.createElement("span");
-    label.textContent = route.from + " → " + route.to;
-
-    const remove = document.createElement("button");
-    remove.type = "button";
-    remove.textContent = "×";
-    remove.setAttribute("aria-label", "Remove saved route");
-
-    remove.addEventListener("click", () => {
-      const updated = getSavedRoutes();
-      updated.splice(index, 1);
-      localStorage.setItem("jishnu-routes", JSON.stringify(updated));
-      renderFavourites();
+      updateThemeButton();
     });
 
-    chip.append(label, remove);
-    list.appendChild(chip);
-  });
-}
 
-document.getElementById("saveRoute").addEventListener("click", () => {
-  if (!currentRoute) return;
+    /* MOBILE NAVIGATION */
 
-  const routes = getSavedRoutes();
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-  const exists = routes.some(route =>
-    route.from === currentRoute.fromCode &&
-    route.to === currentRoute.toCode
-  );
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.textContent = isOpen ? "×" : "☰";
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
 
-  if (exists) {
-    alert("This route is already saved.");
-    return;
-  }
-
-  routes.push({
-    from: currentRoute.fromCode,
-    to: currentRoute.toCode
-  });
-
-  localStorage.setItem("jishnu-routes", JSON.stringify(routes));
-  renderFavourites();
-});
-
-renderFavourites();
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
 
 
-/* FLIGHT NUMBER SEARCH */
+    /* SCROLL PROGRESS */
 
-document.getElementById("flightForm").addEventListener("submit", event => {
-  event.preventDefault();
+    const scrollProgress = document.getElementById("scrollProgress");
 
-  const flight = document.getElementById("flightNumber").value.trim();
+    window.addEventListener("scroll", () => {
+      const total =
+        document.documentElement.scrollHeight - window.innerHeight;
 
-  if (!flight) {
-    alert("Enter a flight number first.");
-    return;
-  }
+      const progress =
+        total > 0 ? (window.scrollY / total) * 100 : 0;
 
-  const query = encodeURIComponent(flight + " flight status");
-  window.open(
-    "https://www.google.com/search?q=" + query,
-    "_blank",
-    "noopener,noreferrer"
-  );
-});
+      scrollProgress.style.width = progress + "%";
+    }, { passive: true });
 
 
-/* AIRPORT SEARCH */
+    /* REVEAL ANIMATIONS */
 
-document.getElementById("airportForm").addEventListener("submit", event => {
-  event.preventDefault();
+    const revealElements = document.querySelectorAll(".reveal");
 
-  const airport = document.getElementById("airportSearch").value.trim();
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
 
-  if (!airport) {
-    alert("Enter an airport name first.");
-    return;
-  }
-
-  const query = encodeURIComponent(airport + " airport information");
-  window.open(
-    "https://www.google.com/search?q=" + query,
-    "_blank",
-    "noopener,noreferrer"
-  );
-});
-
-
-/* FOOTER YEAR */
-
-document.getElementById("year").textContent = new Date().getFullYear();
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("visible"));
+    }
 
 
-/* EASTER EGG */
+    /* AIRPORT INFORMATION */
 
-let eggClicks = 0;
-let eggTimer;
+    const airports = {
+      DEL: { name: "Delhi", lat: 28.5562, lon: 77.1000 },
+      BOM: { name: "Mumbai", lat: 19.0896, lon: 72.8656 },
+      BLR: { name: "Bengaluru", lat: 13.1986, lon: 77.7066 },
+      MAA: { name: "Chennai", lat: 12.9941, lon: 80.1709 },
+      CCU: { name: "Kolkata", lat: 22.6547, lon: 88.4467 },
+      HYD: { name: "Hyderabad", lat: 17.2403, lon: 78.4294 },
+      GOI: { name: "Goa (Manohar International)", lat: 15.7443, lon: 73.8606 },
+      DXB: { name: "Dubai", lat: 25.2532, lon: 55.3657 },
+      SIN: { name: "Singapore Changi", lat: 1.3644, lon: 103.9915 },
+      LHR: { name: "London Heathrow", lat: 51.4700, lon: -0.4543 },
+      JFK: { name: "New York JFK", lat: 40.6413, lon: -73.7781 },
+      DOH: { name: "Doha Hamad", lat: 25.2731, lon: 51.6081 },
+      HND: { name: "Tokyo Haneda", lat: 35.5494, lon: 139.7798 },
+      CDG: { name: "Paris Charles de Gaulle", lat: 49.0097, lon: 2.5479 },
+      FRA: { name: "Frankfurt", lat: 50.0379, lon: 8.5622 }
+    };
 
-document.getElementById("easterEgg").addEventListener("click", () => {
-  eggClicks++;
-  clearTimeout(eggTimer);
 
-  if (eggClicks >= 5) {
-    const toast = document.getElementById("toast");
-    toast.classList.add("show");
+    /* DISTANCE CALCULATION */
 
-    setTimeout(() => toast.classList.remove("show"), 2800);
-    eggClicks = 0;
-  }
+    function toRadians(degrees) {
+      return degrees * Math.PI / 180;
+    }
 
-  eggTimer = setTimeout(() => {
-    eggClicks = 0;
-  }, 1800);
-});
-</script>
+    function calculateDistance(a, b) {
+      const earthRadius = 6371;
+
+      const lat1 = toRadians(a.lat);
+      const lat2 = toRadians(b.lat);
+      const deltaLat = toRadians(b.lat - a.lat);
+      const deltaLon = toRadians(b.lon - a.lon);
+
+      const value =
+        Math.sin(deltaLat / 2) ** 2 +
+        Math.cos(lat1) * Math.cos(lat2) *
+        Math.sin(deltaLon / 2) ** 2;
+
+      return earthRadius * 2 * Math.atan2(
+        Math.sqrt(value),
+        Math.sqrt(1 - value)
+      );
+    }
+
+
+    /* ROUTE EXPLORER */
+
+    const originSelect = document.getElementById("origin");
+    const destinationSelect = document.getElementById("destination");
+    const routeResult = document.getElementById("routeResult");
+
+    let currentRoute = null;
+
+    function calculateRoute() {
+      const fromCode = originSelect.value;
+      const toCode = destinationSelect.value;
+
+      if (fromCode === toCode) {
+        alert("Choose two different airports.");
+        routeResult.classList.remove("visible");
+        currentRoute = null;
+        return;
+      }
+
+      const from = airports[fromCode];
+      const to = airports[toCode];
+
+      if (!from || !to) {
+        alert("Airport information could not be found.");
+        return;
+      }
+
+      const distance = calculateDistance(from, to);
+
+      currentRoute = {
+        from: fromCode,
+        to: toCode,
+        distance: distance
+      };
+
+      document.getElementById("originCode").textContent = fromCode;
+      document.getElementById("destinationCode").textContent = toCode;
+      document.getElementById("originName").textContent = from.name;
+      document.getElementById("destinationName").textContent = to.name;
+
+      document.getElementById("distance").textContent =
+        Math.round(distance).toLocaleString("en-IN") + " km";
+
+      const mapUrl =
+        "https://www.google.com/maps/dir/" +
+        encodeURIComponent(from.name + " Airport") + "/" +
+        encodeURIComponent(to.name + " Airport");
+
+      document.getElementById("mapRoute").href = mapUrl;
+
+      routeResult.classList.add("visible");
+    }
+
+    document.getElementById("calculateRoute")
+      .addEventListener("click", calculateRoute);
+
+    document.getElementById("swapRoute")
+      .addEventListener("click", () => {
+        const oldOrigin = originSelect.value;
+        originSelect.value = destinationSelect.value;
+        destinationSelect.value = oldOrigin;
+        calculateRoute();
+      });
+
+
+    /* SAVED ROUTES */
+
+    function getSavedRoutes() {
+      try {
+        const saved = JSON.parse(localStorage.getItem("jishnu-routes"));
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveRoutes(routes) {
+      try {
+        localStorage.setItem("jishnu-routes", JSON.stringify(routes));
+        return true;
+      } catch {
+        alert("Your browser could not save this route.");
+        return false;
+      }
+    }
+
+    function renderSavedRoutes() {
+      const container = document.getElementById("savedRoutes");
+      const routes = getSavedRoutes();
+
+      container.replaceChildren();
+
+      if (routes.length === 0) {
+        const empty = document.createElement("span");
+        empty.className = "muted";
+        empty.style.fontSize = "11px";
+        empty.textContent = "No saved routes yet.";
+        container.appendChild(empty);
+        return;
+      }
+
+      routes.forEach((route, index) => {
+        const chip = document.createElement("div");
+        chip.className = "saved-chip";
+
+        const label = document.createElement("span");
+        label.textContent = route.from + " → " + route.to;
+
+        const open = document.createElement("button");
+        open.type = "button";
+        open.textContent = "↗";
+        open.setAttribute("aria-label", "Open saved route");
+
+        open.addEventListener("click", () => {
+          originSelect.value = route.from;
+          destinationSelect.value = route.to;
+          calculateRoute();
+          document.getElementById("aviation").scrollIntoView({
+            behavior: "smooth"
+          });
+        });
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.textContent = "×";
+        remove.setAttribute("aria-label", "Remove saved route");
+
+        remove.addEventListener("click", () => {
+          const updated = getSavedRoutes();
+          updated.splice(index, 1);
+          saveRoutes(updated);
+          renderSavedRoutes();
+        });
+
+        chip.append(label, open, remove);
+        container.appendChild(chip);
+      });
+    }
+
+    document.getElementById("saveRoute")
+      .addEventListener("click", () => {
+        if (!currentRoute) return;
+
+        const routes = getSavedRoutes();
+
+        const exists = routes.some(route =>
+          route.from === currentRoute.from &&
+          route.to === currentRoute.to
+        );
+
+        if (exists) {
+          alert("That route is already saved.");
+          return;
+        }
+
+        routes.push({
+          from: currentRoute.from,
+          to: currentRoute.to
+        });
+
+        if (saveRoutes(routes)) {
+          renderSavedRoutes();
+        }
+      });
+
+    renderSavedRoutes();
+
+
+    /* FLIGHT SEARCH */
+
+    document.getElementById("flightForm")
+      .addEventListener("submit", event => {
+        event.preventDefault();
+
+        const flight =
+          document.getElementById("flightNumber").value.trim();
+
+        if (!flight) {
+          alert("Enter a flight number first.");
+          return;
+        }
+
+        const url =
+          "https://www.google.com/search?q=" +
+          encodeURIComponent(flight + " flight status");
+
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+
+
+    /* AIRPORT SEARCH */
+
+    document.getElementById("airportForm")
+      .addEventListener("submit", event => {
+        event.preventDefault();
+
+        const airport =
+          document.getElementById("airportSearch").value.trim();
+
+        if (!airport) {
+          alert("Enter an airport name first.");
+          return;
+        }
+
+        const url =
+          "https://www.google.com/search?q=" +
+          encodeURIComponent(airport + " airport information");
+
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+
+
+    /* FOOTER YEAR */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* SMALL EASTER EGG */
+
+    let eggClicks = 0;
+    let eggTimer;
+
+    document.getElementById("easterEgg")
+      .addEventListener("click", () => {
+        eggClicks++;
+        clearTimeout(eggTimer);
+
+        if (eggClicks >= 5) {
+          const toast = document.getElementById("toast");
+          toast.classList.add("show");
+
+          setTimeout(() => toast.classList.remove("show"), 2600);
+          eggClicks = 0;
+        }
+
+        eggTimer = setTimeout(() => {
+          eggClicks = 0;
+        }, 1800);
+      });
+
+  </script>
 
 </body>
 </html>
